@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="register">
-    <div class="login   ">
+    <div class="register   ">
         @if (Route::has('login'))
     <div class="welocomNav ">
        <div class="navRigh ">

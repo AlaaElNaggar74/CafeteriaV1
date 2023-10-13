@@ -42,7 +42,8 @@
                 @endif
                 <div class="welcom">
                     
-                    <h1 class="welcomCaftria">Cafeteria</h1>
+                    {{-- <h1 class="welcomCaftria" id="welcomCaftria">Cafeteria</h1> --}}
+                    <h1 class="welcomCaftria text-center" id="welcomCaftria"></h1>
     
                 </div>
             </div>

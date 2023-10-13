@@ -85,22 +85,31 @@
                     <h4 class="">Lastet Orders</h4>
                    <div class="row overLef">
                     <div class="drink text-center ">
+                        <div class="drinkPrice">23</div>
                         <img src="{{asset('images/drink1.png')}}" alt="" class="">
                         <p class="fw-bold">Cofe</p>
                     </div>
                     <div class="drink text-center ">
+                        <div class="drinkPrice">23</div>
+
                         <img src="{{asset('images/drink2.png')}}" alt="" class="">
                         <p class="fw-bold">Pepsi</p>
                     </div>
                     <div class="drink text-center ">
+                        <div class="drinkPrice">23</div>
+
                         <img src="{{asset('images/drink6.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
+                        <div class="drinkPrice">23</div>
+
                         <img src="{{asset('images/drink4.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center ">
+                        <div class="drinkPrice">23</div>
+
                         <img src="{{asset('images/drink5.png')}}" alt="" class="">
                         <p class="fw-bold">Cofe</p>
                     </div>
@@ -110,43 +119,63 @@
                     <h4 class="mt-4">Products</h4>
                    <div class="row overLef ">
                     <div class="drink text-center ">
-                        <img src="{{asset('images/drink1.png')}}" alt="" class="">
+                        <div class="drinkPrice">23</div>
+
+                        <img src="{{asset('images/drink10.png')}}" alt="" class="">
                         <p class="fw-bold">Cofe</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink2.png')}}" alt="" class="">
+                        <div class="drinkPrice">23</div>
+
+                        <img src="{{asset('images/drink8.png')}}" alt="" class="">
                         <p class="fw-bold">Pepsi</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink6.png')}}" alt="" class="">
+                        <div class="drinkPrice">23</div>
+
+                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
                         <h4>Lemon</h4>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">23</div>
+
+                        <img src="{{asset('images/drink3.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
+                        <div class="drinkPrice">23</div>
+
+                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
                         <p class="fw-bold">Cofe</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">23</div>
+
+                        <img src="{{asset('images/drink7.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
+                        <div class="drinkPrice">23</div>
+
+                        <img src="{{asset('images/drink13.png')}}" alt="" class="">
                         <p class="fw-bold">Cofe</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">23</div>
+
+                        <img src="{{asset('images/drink11.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
+                        <div class="drinkPrice">23</div>
+
+                        <img src="{{asset('images/drink15.png')}}" alt="" class="">
                         <p class="fw-bold">Cofe</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">23</div>
+
+                        <img src="{{asset('images/drink1.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                   

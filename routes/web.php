@@ -28,6 +28,9 @@ Route::get("/adminManualOrder",[productsController::class,"adminManualOrder"])->
 Route::get("/adminChecks",[productsController::class,"adminChecks"])->name("adminChecks");
 Route::get("/adminAddUser",[productsController::class,"addUser"])->name("addUser");
 Route::get("/adminAddProduct",[productsController::class,"addProduct"])->name("AddProduct");
+Route::get("/adminUserView/{id}",[productsController::class,"view"])->name("view");
+Route::get("/adminUserEdit/{id}",[productsController::class,"editUser"])->name("edit");
+Route::get("/adminUserDestroy/{id}",[productsController::class,"destroyUser"])->name("destroy");
 
 // Route::get("userHome",[productsController::class,"index"])->name("index");
 // Route::get("myOrderUser",[productsController::class,"orders"])->name("userOrder");

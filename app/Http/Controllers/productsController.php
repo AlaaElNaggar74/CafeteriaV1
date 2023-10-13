@@ -43,5 +43,17 @@ class productsController extends Controller
 
         return view("adminView.addProduct");
     }
+    function view($id){
+
+        return view("adminView.view",["viewItem"=>$id]);
+    }
+    function editUser($id){
+
+        return view("adminView.edit",["editItem"=>$id]);
+    }
+    function destroyUser(){
+
+        return view("adminView.users");
+    }
    
 }

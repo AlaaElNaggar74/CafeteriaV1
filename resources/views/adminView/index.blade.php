@@ -69,6 +69,7 @@
                                 <option value="3">Three</option>
                               </select>
                         </div>
+
                         <div class="lin">
                         </div>
                         <div class="total text-right">
@@ -81,110 +82,135 @@
                 </div>
                  {{-- <div class="col-md-4 "></div> --}}
                <div class="col-md-8">
-                <div class="lef m-0  mt-3 mt-md-0">
-                    <h4 class="">Lastet Orders</h4>
-                   <div class="row overLef">
-                    <div class="drink text-center ">
-                        <img src="{{asset('images/drink1.png')}}" alt="" class="">
-                        <p class="fw-bold">Cofe</p>
+                <div class="addTouser">
+                    <h3>Add To User </h3>
+                    <div class="mb-3 d-flex align-items-center col-md-3 m-auto">
+
+                        <select class="form-select " aria-label="Default select example">
+                            <option selected> select User</option>
+                            <option value="1">Aya</option>
+                            <option value="2">Noor</option>
+                            <option value="3">Norhan</option>
+                            <option value="3">Mostafa</option>
+                            <option value="3">Alaa</option>
+                          </select>
                     </div>
-                    <div class="drink text-center ">
-                        <img src="{{asset('images/drink2.png')}}" alt="" class="">
-                        <p class="fw-bold">Pepsi</p>
-                    </div>
-                    <div class="drink text-center ">
-                        <img src="{{asset('images/drink6.png')}}" alt="" class="">
-                        <p class="fw-bold">Lemon</p>
-                    </div>
-                    <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
-                        <p class="fw-bold">Lemon</p>
-                    </div>
-                    <div class="drink text-center ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
-                        <p class="fw-bold">Cofe</p>
-                    </div>
-                   </div>
-                   <div class="lin">
                 </div>
+                <div class="lef m-0  mt-3 mt-md-0">
+                   
+                   <div class="lin">
+                  </div>
                     <h4 class="mt-4">Products</h4>
                    <div class="row overLef ">
                     <div class="drink text-center ">
+                        <div class="drinkPrice">10</div>
+
                         <img src="{{asset('images/drink1.png')}}" alt="" class="">
                         <p class="fw-bold">Cofe</p>
                     </div>
                     <div class="drink text-center  ">
+                        <div class="drinkPrice">75</div>
+
                         <img src="{{asset('images/drink2.png')}}" alt="" class="">
                         <p class="fw-bold">Pepsi</p>
                     </div>
                     <div class="drink text-center  ">
+                        <div class="drinkPrice">42</div>
+
                         <img src="{{asset('images/drink6.png')}}" alt="" class="">
-                        <h4>Lemon</h4>
+                        <p class="fw-bold"> Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">35</div>
+
+                        <img src="{{asset('images/drink7.png')}}" alt="" class="">
+                        <p class="fw-bold">orange</p>
+                    </div>
+                    <div class="drink text-center  ">
+                        <div class="drinkPrice">88</div>
+
+                        <img src="{{asset('images/drink8.png')}}" alt="" class="">
+                        <p class="fw-bold">orangeCup</p>
+                    </div>
+                    <div class="drink text-center  ">
+                        <div class="drinkPrice">71</div>
+
+                        <img src="{{asset('images/drink9.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
-                        <p class="fw-bold">Cofe</p>
-                    </div>
-                    <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">63</div>
+
+                        <img src="{{asset('images/drink10.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
-                        <p class="fw-bold">Cofe</p>
-                    </div>
-                    <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">27</div>
+
+                        <img src="{{asset('images/drink11.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
-                        <p class="fw-bold">Cofe</p>
-                    </div>
-                    <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">55</div>
+
+                        <img src="{{asset('images/drink12.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
-                        <p class="fw-bold">Cofe</p>
-                    </div>
-                    <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">14</div>
+                        <img src="{{asset('images/drink13.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
-                        <p class="fw-bold">Cofe</p>
-                    </div>
-                    <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">67</div>
+
+                        <img src="{{asset('images/drink14.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
-                        <p class="fw-bold">Cofe</p>
-                    </div>
-                    <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">99</div>
+
+                        <img src="{{asset('images/drink15.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
-                        <p class="fw-bold">Cofe</p>
-                    </div>
-                    <div class="drink text-center  ">
-                        <img src="{{asset('images/drink4.png')}}" alt="" class="">
+                        <div class="drinkPrice">59</div>
+
+                        <img src="{{asset('images/drink16.png')}}" alt="" class="">
                         <p class="fw-bold">Lemon</p>
                     </div>
                     <div class="drink text-center  ">
-                        <img src="{{asset('images/drink5.png')}}" alt="" class="">
-                        <p class="fw-bold">Cofe</p>
+                        <div class="drinkPrice">77</div>
+
+                        <img src="{{asset('images/drink17.png')}}" alt="" class="">
+                        <p class="fw-bold">Lemon</p>
                     </div>
+                    <div class="drink text-center  ">
+                        <div class="drinkPrice">82</div>
+
+                        <img src="{{asset('images/drink18.png')}}" alt="" class="">
+                        <p class="fw-bold">Lemon</p>
+                    </div>
+                    <div class="drink text-center  ">
+                        <div class="drinkPrice">91</div>
+
+                        <img src="{{asset('images/drink19.png')}}" alt="" class="">
+                        <p class="fw-bold">Lemon</p>
+                    </div>
+                    <div class="drink text-center  ">
+                        <div class="drinkPrice">33</div>
+
+                        <img src="{{asset('images/drink20.png')}}" alt="" class="">
+                        <p class="fw-bold">Lemon</p>
+                    </div>
+                    <div class="drink text-center  ">
+                        <div class="drinkPrice">20</div>
+
+                        <img src="{{asset('images/drink21.png')}}" alt="" class="">
+                        <p class="fw-bold">Lemon</p>
+                    </div>
+                
+                  
                    </div>
                 </div>
                </div>

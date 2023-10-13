@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="{{asset('style/adminAddUser.css')}}">
     <link rel="stylesheet" href="{{asset('style/adminAddProduct.css')}}">
     <link rel="stylesheet" href="{{asset('style/admiUser.css')}}">
+    <link rel="stylesheet" href="{{asset('style/adminView.css')}}">
+    <link rel="stylesheet" href="{{asset('style/adminEditUser.css')}}">
+    <link rel="stylesheet" href="{{asset('style/adminCheckPage.css')}}">
 
 
     <!-- Scripts -->
@@ -139,5 +142,6 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{asset('js/home.js')}}"></script>
 </body>
 </html>
