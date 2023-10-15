@@ -5,7 +5,7 @@
         <div class="container">
             <h1>Edit User</h1>
          <div class="for col-md-9 col-lg-6 col-10 m-auto" >
-            <form action="" >
+            <form action="{{route('storeProduct')}}"  method="post">
                 <div class="mb-1">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">

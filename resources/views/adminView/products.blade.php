@@ -25,13 +25,27 @@
                 </tr>
               </thead>
               <tbody>
+
+                @foreach ($products as $product)
                 <tr>
+                  <th  >{{$product->name}}</th>
+                  <td>{{$product->price}}$</td>
+                  <td class="imgTable"><img src="{{asset('/images/productsImage/'.$product->image)}}" alt="" class="" />
+                  </td>
+                  <td><a href="{{route('destroyProducts',$product->id)}}" class="btn btn-danger">delete</a>
+                  <a href="{{route('editProduct',$product->id)}}" class="btn btn-danger">edit</a>
+                  <a href="{{route('showProduct',$product->id)}}" class="btn btn-info">show</a></td>
+                </tr>
+                @endforeach
+
+
+                {{-- <tr>
                   <th  >Tea</th>
                   <td>50$</td>
                   <td class="imgTable"><img src="{{asset('images/drink2.png')}}" class="img-fluid rounded-top" alt=""></td>
                   <td><a href="" class="btn btn-danger">Cancel</a></td>
-                </tr>
-                <tr>
+                </tr> --}}
+                {{-- <tr>
                   <th  >Pepsi</th>
                   <td>40$</td>
                   <td class="imgTable"><img src="{{asset('images/drink5.png')}}" class="img-fluid rounded-top" alt=""></td>
@@ -42,7 +56,7 @@
                   <td >10$</td>
                   <td class="imgTable"><img src="{{asset('images/drink4.png')}}" class="img-fluid rounded-top" alt=""></td>
                   <td><a href="" class="btn btn-danger">Cancel</a></td>
-                </tr>
+                </tr> --}}
               </tbody>
             </table>
             {{-- <div class="productDetails">

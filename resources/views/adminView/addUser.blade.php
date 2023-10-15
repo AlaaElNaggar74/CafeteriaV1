@@ -3,6 +3,7 @@
     @section('content')
     <div class="adminAddUserPage">
         <div class="container">
+          
             <h1>Add User</h1>
          <div class="for col-md-9 col-lg-6 col-10 m-auto" >
             <form action=""  enctype="multipart/form-data">
@@ -10,6 +11,8 @@
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name" name="id" placeholder="Enter Your Name">
                   </div>
+                  
+
                   <div class="mb-1">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">

@@ -1,21 +1,34 @@
  @extends('layouts.app')
  @section('content')
-<div class="adminAddProductrPage">
+<div class="adminEditProductrPage">
   <div class="container">
     @if ($errors->any())
-          <div >
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      {{-- <li>{{ $error }}</li> --}}
-                  @endforeach
-              </ul>
-          </div>
-      @endif
-    <h1>Add Product</h1>
+    <div >
+        <ul>
+            @foreach ($errors->all() as $error)
+                {{-- <li>{{ $error }}</li> --}}
+            @endforeach
+        </ul>
+    </div>
+@endif
+    <h1>Edit Product</h1>
     <div class="Productfor col-md-9 col-lg-6 col-10 m-auto">
       {{-- <form  method="Post" action="{{route('product.edit')}}" enctype="multipart/form-data"> --}}
-      <form  method="Post" action="{{route('storeProduct')}}"  enctype="multipart/form-data">
+      <form  method="Post" action="{{route('updateProduct')}}" enctype="multipart/form-data">
         @csrf
+        <div class="mb-1">
+          <label for="name" class="form-label">ID</label>
+          <input
+            type="text"
+            class="form-control "
+            id="name"
+            name="id"
+            readonly
+            value="{{$editItem->id}}" 
+            placeholder="Enter Your Name"
+          />
+        </div>
+        
         <div class="mb-1">
           <label for="name" class="form-label">Product</label>
           <input
@@ -23,7 +36,7 @@
             class="form-control"
             id="name"
             name="name"
-            value="{{old('name')}}"
+            value="{{$editItem->name}}" 
             placeholder="Enter Your Name"
           />
         </div>
@@ -37,7 +50,8 @@
             class="form-control"
             id="category"
             name="category"
-            value="{{old('category')}}"
+            value="{{$editItem->category}}" 
+
             placeholder="Enter Your category"
           />
         </div>
@@ -61,10 +75,12 @@
             class="form-control"
             id="price"
             name="price"
-            value="{{old('price')}}"
+            value="{{$editItem->price}}" 
+
             placeholder="Product Pr"
           />
         </div>
+
 
         <div class="mb-1">
           <label for="price" class="form-label">image</label>
@@ -77,7 +93,6 @@
           />
         </div>
         @error('image') <p class="text-danger">{{$message}}</p> @enderror
-
         {{--
         <div class="mb-1">
           <label for="conPassw" class="form-label">Confirmed Password</label>
@@ -125,7 +140,7 @@
         </div> --}}
 
         <div class="bt mt-4">
-          <input type="submit" value="Save" class="btn btn-success" />
+          <input type="submit" value="update" class="btn btn-success" />
           <input type="button" value="Reset" class="btn btn-info" />
         </div>
       </form>

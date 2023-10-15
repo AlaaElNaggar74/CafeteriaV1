@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('style/adminView.css')}}">
     <link rel="stylesheet" href="{{asset('style/adminEditUser.css')}}">
     <link rel="stylesheet" href="{{asset('style/adminCheckPage.css')}}">
+    <link rel="stylesheet" href="{{asset('style/adminEditProduct.css')}}">
 
 
     <!-- Scripts -->
