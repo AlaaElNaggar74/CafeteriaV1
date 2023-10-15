@@ -86,7 +86,7 @@ function editProduct($id){
 }
 
 //  Update Function***********************
-    function updateProduct(){
+function updateProduct(){
     
         $request=\request();
         $request_data = \request()->all();
@@ -111,7 +111,9 @@ function editProduct($id){
 
         
         return to_route("adminProducts");
-    }
+     }
+
+
 
 
 
