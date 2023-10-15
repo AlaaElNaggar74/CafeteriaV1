@@ -1,0 +1,40 @@
+
+.userOrderPage {
+    margin-top: 120px;
+}
+/* .userOrderPage .orderDetails .orderDet{
+    width: ;
+} */
+
+.userOrderPage .orderDetails {
+  margin-top: 50px;
+}
+
+.userOrderPage .orderDetails .orderDet img{
+    width: 100%;
+    height: 100px;
+}
+
+.userOrderPage .orderDetails .orderDet .orderIndex{
+    width: 100px;
+    cursor: pointer;
+    /* height: 100px; */
+}
+
+
+
+
+.adminProductPage .for{
+    overflow-x: auto;
+
+}
+
+.adminProductPage .for table{
+   width: 800px;
+   margin: auto;
+}
+/* .userOrderPage table td {
+display: flex;
+justify-content: center;
+align-items: center;
+} */

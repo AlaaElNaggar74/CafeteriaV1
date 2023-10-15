@@ -1,0 +1,72 @@
+
+
+.userHomePage {
+    margin-top: 120px;
+}
+
+.userHomePage .ta{
+    overflow-x: auto;
+}
+
+.userHomePage th {
+    border-bottom: 0;
+}
+
+.userHomePage td {
+    border-bottom: 0;
+}
+
+.userHomePage .lin {
+    width: 80%;
+    height: 3px;
+    background-color: black;
+    margin: 15px auto;
+}
+.userHomePage .notes textarea {
+    width: 95%;
+    margin: 15px auto;
+    resize: none;
+}
+.userHomePage .select {
+    width: 97%;
+}
+
+.userHomePage .indexRight {
+    height: 400px;
+    /* background-color: aqua; */
+    overflow-y: auto;
+}
+
+.userHomePage .rig {
+    padding: 10px;
+}
+.userHomePage .lef {
+    height: 400px;
+    /* background-color: aqua; */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.userHomePage .lef img{
+    width: 100%;
+    height: 100px;
+}
+
+.userHomePage .lef .drink{
+    width: 100px;
+    cursor: pointer;
+    /* height: 100px; */
+}
+.userHomePage .overLef{
+    overflow-y: auto;
+}
+
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #000000;
+}
