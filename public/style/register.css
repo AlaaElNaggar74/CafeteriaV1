@@ -6,12 +6,30 @@
     width: 100%;
     margin: 0;
     padding: 0;
-    background-image: url('../images/image12.jpg');
+    background-image: url('../images/image14.jpg');
     background-position: center;
     background-size: cover;
     position: relative;
     z-index: 101;
+    animation: backgroundAnimation 10s linear infinite ;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+@keyframes backgroundAnimation {
+    0% {
+        background-image: url("../images/image14.jpg");
+        /* opacity: 0; */
+        }
 
+    30% {
+        background-image: url("../images/image15.jpg");
+    }
+    70% {
+        background-image: url("../images/image17.jpg");
+    }
+   
+    100% {
+        background-image: url("../images/image14.jpg");
+    }
 }
 
 .register::before {
@@ -38,7 +56,7 @@
 
 }
 .register .card {
-    background-color: #3636365e !important;
+    background-color: #00000070 !important;
     color: white !important;
     font-weight: bold;
 }

@@ -12,11 +12,14 @@
 
 .adminProductPage .imgTable img{
     width: 100%;
-    height: 75px;
+    height: 100%;
+    /* height: 75px; */
 }
 
 .adminProductPage .imgTable{
-    width: 100px;
+    width: 60px;
+    height: 60px;
+
     /* cursor: pointer; */
     /* height: 100px; */
 }
