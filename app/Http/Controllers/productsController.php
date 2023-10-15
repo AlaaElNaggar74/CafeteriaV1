@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\products;
+use App\Models\product;
 
 class productsController extends Controller
 {
@@ -12,14 +12,14 @@ class productsController extends Controller
     // Index Function***********************
     function adminProducts()
     {
-        $products = products::all();
+        $products = product::all();
         return view("adminView.products", ["products" => $products]);
     }
 
     // Destroy Function***********************
     function destroyProducts($id)
     {
-        $product = products::findorfail($id);
+        $product = product::findorfail($id);
         if ($product->image) {
             try {
                 unlink("images/productsImage/{$product->image}");
@@ -33,7 +33,7 @@ class productsController extends Controller
     // show Function***********************
     function showProduct($id)
     {
-        $product = products::findorfail($id);
+        $product = product::findorfail($id);
         return view("adminView.viewProducts", ["viewItem" => $product]);
     }
 
@@ -70,7 +70,7 @@ class productsController extends Controller
         $name = \request()->get("name");
         $price = \request()->get("price");
         // $category = \request()->get("category");
-        $product = new products();
+        $product = new product();
 
         $product->name = $name;
         $product->price = $price;
@@ -84,7 +84,7 @@ class productsController extends Controller
     //  Edit Function***********************
     function editProduct($id)
     {
-        $product = products::findorfail($id);
+        $product = product::findorfail($id);
         return view("adminView.editProduct", ["editItem" => $product]);
     }
 
@@ -101,7 +101,7 @@ class productsController extends Controller
         }
 
         $id = \request()->get("id");
-        $productID = products::where("id", $id)->first();
+        $productID = product::where("id", $id)->first();
 
         $name = \request()->get("name");
         $price = \request()->get("price");
@@ -134,7 +134,7 @@ class productsController extends Controller
     }
     function adminIndex()
     {
-        $products = products::all();
+        $products = product::all();
         return view("adminView.index", ["products" => $products]);
     }
 

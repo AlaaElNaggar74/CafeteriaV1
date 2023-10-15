@@ -9,11 +9,13 @@ class Product extends Model
 {
     use HasFactory;
 
-    function category(){
+    function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    function order(){
+    function order()
+    {
         return $this->belongsToMany(Order::class);
     }
 }
