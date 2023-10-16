@@ -54,15 +54,33 @@
          </table>
 
          
-            <div>
+            {{-- <div>
           
-                @foreach($product_order as $product)
+                @foreach($products as $product)
                   <div>
-                    
-                    <img src="{{asset('images/'.$product->image)}}">
+                    <h2>{{$product->name}}</h2>
+                   
                   </div>
                 @endforeach
                 </div>
+            </div> --}}
+
+            <div class="orderItems mt-5">
+                <div class="checkDrink text-center">
+                  
+                    @foreach($products as $product) 
+                        <div>
+                            <div class="drinkPrice">{{$product->price}}</div>
+                    
+                            <img src="{{asset('images/'.$product->image)}}" class="img-fluid rounded-top" alt="" />
+                            <p class="fw-bold">{{$product->price}}</p>
+                            <p class="fw-bold">{{$product->order_id}}</p>
+                        </div>
+                    @endforeach
+                  
+                </div>
+        
+                
             </div>
            
         
