@@ -49,53 +49,17 @@
 
 .adminHomePage .lef img{
     width: 100%;
-    height: 120px;
-    transform: rotate(-10deg);
-    transition: .2s;
+    height: 100px;
 }
 
-.adminHomePage .lef img:hover{
-    transform: rotate(0deg);
-  }
-
-
-  .adminHomePage .lef .drink{
-    width: 120px;
+.adminHomePage .lef .drink{
+    width: 100px;
     cursor: pointer;
     /* height: 100px; */
-    transition: .4s;
-    position: relative;
-    /* background-color: aqua; */
-   
 }
-
-  .adminHomePage .lef .drink .drinkPrice{
-
-    position: absolute;
-    top: -15px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #afafaf;
-    color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 120;
-   
-}
-
-.adminHomePage .lef .drink:hover{
-    transform:translateY(-5px);
-  }
-  
-
 .adminHomePage .overLef{
     overflow-y: auto;
-    padding: 20px 0;
 }
-
 
 
 ::-webkit-scrollbar {

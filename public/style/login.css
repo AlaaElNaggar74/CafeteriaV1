@@ -11,26 +11,7 @@
     background-size: cover;
     position: relative;
     z-index: 101;
-    /* transition: .3s; */
-    animation: backgroundAnimation 10s linear infinite ;
-    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-}
-@keyframes backgroundAnimation {
-    0% {
-        background-image: url("../images/image12.jpg");
-        /* opacity: 0; */
-        }
 
-    25% {
-        background-image: url("../images/image15.jpg");
-    }
-    65% {
-        background-image: url("../images/image16.jpg");
-    }
-   
-    100% {
-        background-image: url("../images/image12.jpg");
-    }
 }
 
 .login::before {
@@ -43,7 +24,7 @@
     right: 0;
     bottom: 0;
     z-index: -1;
-    background-color: rgba(49, 49, 49, 0.582);
+    background-color: rgba(0, 0, 0, 0.582);
 }
 
 .login .container{
@@ -57,7 +38,7 @@
 
 }
 .login .card {
-    background-color: #00000070 !important;
+    background-color: #3636365e !important;
     color: white !important;
     font-weight: bold;
 }

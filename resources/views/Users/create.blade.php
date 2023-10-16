@@ -1,36 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="register">
-    <div class="login   ">
-        @if (Route::has('login'))
-    <div class="welocomNav ">
-       <div class="navRigh ">
-        @auth
-      
-    @else
-    <div class="hom">
-        <a href="{{ url('/') }}" class="fs-3 text-decoration-none ">Home</a>
-    </div>
-       <div class="logRe">
-        <a href="{{ route('login') }}" class="fs-3 text-decoration-none me-1">Log in</a>
-    
-        @if (Route::has('register'))
-            <a href="{{ route('register') }}" class="fs-3 text-decoration-none">Register</a>
-        @endif
-       </div>
-    @endauth
-       </div>
-    </div>
-    @endif
+
+<div class="adminUserPage">
     <div class="container">
-        <div class="row justify-content-center col-md-8 col-10">
-            <div class="col-md-8">
+        <div class="row justify-content-center">
+            <div class="col-xl-12 col-md-12">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header"> 
+                    <h2 class="text-center">Create User </h2> 
+                    </div>
     
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('Users.store') }}">
                             @csrf
     
                             <div class="row mb-3">
@@ -62,12 +44,12 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="phone" class="col-md-4 col-form-label text-md-end">{{ __('Phone') }}</label>
+                                <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                                    <input id="phone" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
     
-                                    @error('phone')
+                                    @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -88,7 +70,7 @@
                                     @enderror
                                 </div>
                             </div>
-    
+    {{--
                             <div class="row mb-3">
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
     
@@ -96,11 +78,12 @@
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
+                            --}}                    
     
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                       Add User
                                     </button>
                                 </div>
                             </div>
