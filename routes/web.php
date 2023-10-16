@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 
-Route::get("/userHome", [productsController::class, "index"])->name("index");
+Route::get("/userHome", [productsController::class, "index"])->name("indexUser");
 Route::get("/myOrderUser", [productsController::class, "orders"])->name("userOrder");
 
 Route::get("/adminHome", [productsController::class, "adminIndex"])->name("adminIndex");
@@ -50,7 +50,7 @@ Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name
 
 Route::resource('categories', CategoryController::class);
 
-Route::get("/myorder",[orderController::class,"index"])->name("order.index");
+Route::get("/userOrders",[orderController::class,"index"])->name("order.index");
 
 Auth::routes();
 

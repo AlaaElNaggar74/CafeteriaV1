@@ -9,8 +9,11 @@
             </form>
         </div>
         <div class="row">
-            <div class="indexRight col-md-4 ">
-                <div class="rig border border-2 border-black">
+            <div class=" col-md-4 ">
+               <div class=" indexRight border-2 border-black border">
+
+              
+                <div class="rig border ">
                     <div class="ta">
                         <table class="table ">
 
@@ -77,7 +80,7 @@
                     </div>
                     <td> <button class="btn btn-danger ">Save</button></td>
                 </div>
-
+            </div>
             </div>
             {{-- <div class="col-md-4 "></div> --}}
             <div class="col-md-8">

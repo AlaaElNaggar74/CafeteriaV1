@@ -1,13 +1,16 @@
 @extends('layouts.app') @section('content')
 <div class="adminHomePage">
-  <div class="container">
+  <div class="container-fluid">
     <div class="col-md-3 ms-auto mb-3">
       <form action="" method="post">
         <input class="form-control" id="search" placeholder="Type to search..." />
       </form>
     </div>
     <div class="row">
-      <div class="indexRight col-md-4 border border-2 border-black">
+      <div class=" col-md-4 ">
+        <div class="indexRight border border-2 border-black">
+
+       
         <div class="rig ">
           <div class="ta">
             <table class="table">
@@ -69,6 +72,7 @@
           </div>
           <td><button class="btn btn-danger">Save</button></td>
         </div>
+      </div>
       </div>
       {{--
       <div class="col-md-4"></div>

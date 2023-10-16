@@ -61,6 +61,7 @@ class productsController extends Controller
         \request()->validate([
             'name' => 'required|min:3|unique:products',
             'image' => 'required|unique:products',
+            'price' => 'required|max:5',
         ], [
             "name.required" => "The name Is Required",
             "name.unique" => "The name Is unique",
@@ -69,16 +70,22 @@ class productsController extends Controller
             "image.required" => "The Image Source Is Required",
             "image.unique" => "The Image Source Used Before",
 
+            "price.required" => "The price Is Required",
+            "price.max" => "The price Max 5 Number",
+
+
         ]);
 
         $name = \request()->get("name");
         $price = \request()->get("price");
+        $stock = \request()->get("stock");
         $category_id = \request()->get("category_id");
         // $category = \request()->get("category");
         $product = new Product();
 
         $product->name = $name;
         $product->price = $price;
+        $product->stock = $stock;
         $product->category_id = $category_id;
         // $product->category = $category;
         $product->image = $image;

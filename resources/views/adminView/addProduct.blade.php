@@ -62,7 +62,12 @@
 
          <div class="mb-1">
            <label for="price" class="form-label">Price</label>
-           <input type="number" class="form-control" id="price" name="price" value="{{old('price')}}" placeholder="Product Pr" />
+           <input type="number" class="form-control" id="price" name="price" value="{{old('price')}}" placeholder="price" />
+         </div>
+         @error('price') <p class="text-danger">{{$message}}</p> @enderror
+         <div class="mb-1">
+           <label for="stock" class="form-label">Stock</label>
+           <input type="number" class="form-control" id="stock" name="stock" value="{{old('stock')}}" placeholder="stock" />
          </div>
 
          <div class="mb-1">
