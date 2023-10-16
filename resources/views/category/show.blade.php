@@ -24,10 +24,18 @@
                     <a href="{{route('categories.index')}}" class="btn btn-primary">Back</a>
                 </div>
               </div>
+
         </div>
 
     </div>
-  
+<div>
+    <h3 >Product In Category : </h3>
+    @foreach ($category->product as $pro)
+    <div class="border-bottom border-2 border-black p-2 pt-4 w-auto">
+        <h3><span class="text-danger">ID</span> {{$pro->id}} </h3><h3> <span class="text-danger">Name</span> {{$pro->name}}</h3>
+    </div>
+    @endforeach
+</div>
    
 </div>
 </div>

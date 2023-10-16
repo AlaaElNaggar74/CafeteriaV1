@@ -33,7 +33,12 @@
             <td>{{$product->price}}$</td>
             <td class="imgTable"><img src="{{asset('/images/productsImage/'.$product->image)}}" alt="" class="" />
             </td>
-            <td><a href="{{route('categories.show',$product->category->id)}}">{{$product->category->name}}</a>  </td>
+            @if ($product->category)
+             <td><a href="{{route('categories.show',$product->category->id)}}">{{$product->category->name}}</a>  </td>
+            @else
+            
+            <td> Empty </td>
+            @endif
             <td><a href="{{route('destroyProducts',$product->id)}}" class="btn btn-danger">delete</a>
               <a href="{{route('editProduct',$product->id)}}" class="btn btn-danger">edit</a>
               <a href="{{route('showProduct',$product->id)}}" class="btn btn-info">show</a>

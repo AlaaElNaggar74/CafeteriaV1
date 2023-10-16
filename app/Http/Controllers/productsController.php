@@ -49,6 +49,7 @@ class productsController extends Controller
     //  Store Function***********************
     function store()
     {
+        // dd(\request()->all());
         $request = \request();
         $request_data = \request()->all();
         if ($request->hasFile("image")) {
