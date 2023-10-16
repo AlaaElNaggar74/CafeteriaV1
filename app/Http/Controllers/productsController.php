@@ -3,11 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use App\Models\Product;
-=======
-use App\Models\product;
->>>>>>> 03f2c70ab527a899e453ae69affcffbd9b39a6fc
 
 class productsController extends Controller
 {
@@ -16,22 +12,14 @@ class productsController extends Controller
     // Index Function***********************
     function adminProducts()
     {
-<<<<<<< HEAD
         $products = Product::all();
-=======
-        $products = product::all();
->>>>>>> 03f2c70ab527a899e453ae69affcffbd9b39a6fc
         return view("adminView.products", ["products" => $products]);
     }
 
     // Destroy Function***********************
     function destroyProducts($id)
     {
-<<<<<<< HEAD
         $product = Product::findorfail($id);
-=======
-        $product = product::findorfail($id);
->>>>>>> 03f2c70ab527a899e453ae69affcffbd9b39a6fc
         if ($product->image) {
             try {
                 unlink("images/productsImage/{$product->image}");
@@ -45,11 +33,7 @@ class productsController extends Controller
     // show Function***********************
     function showProduct($id)
     {
-<<<<<<< HEAD
         $product = Product::findorfail($id);
-=======
-        $product = product::findorfail($id);
->>>>>>> 03f2c70ab527a899e453ae69affcffbd9b39a6fc
         return view("adminView.viewProducts", ["viewItem" => $product]);
     }
 
@@ -86,11 +70,7 @@ class productsController extends Controller
         $name = \request()->get("name");
         $price = \request()->get("price");
         // $category = \request()->get("category");
-<<<<<<< HEAD
         $product = new Product();
-=======
-        $product = new product();
->>>>>>> 03f2c70ab527a899e453ae69affcffbd9b39a6fc
 
         $product->name = $name;
         $product->price = $price;
@@ -104,11 +84,7 @@ class productsController extends Controller
     //  Edit Function***********************
     function editProduct($id)
     {
-<<<<<<< HEAD
         $product = Product::findorfail($id);
-=======
-        $product = product::findorfail($id);
->>>>>>> 03f2c70ab527a899e453ae69affcffbd9b39a6fc
         return view("adminView.editProduct", ["editItem" => $product]);
     }
 
@@ -125,11 +101,7 @@ class productsController extends Controller
         }
 
         $id = \request()->get("id");
-<<<<<<< HEAD
         $productID = Product::where("id", $id)->first();
-=======
-        $productID = product::where("id", $id)->first();
->>>>>>> 03f2c70ab527a899e453ae69affcffbd9b39a6fc
 
         $name = \request()->get("name");
         $price = \request()->get("price");
@@ -162,11 +134,7 @@ class productsController extends Controller
     }
     function adminIndex()
     {
-<<<<<<< HEAD
         $products = Product::all();
-=======
-        $products = product::all();
->>>>>>> 03f2c70ab527a899e453ae69affcffbd9b39a6fc
         return view("adminView.index", ["products" => $products]);
     }
 

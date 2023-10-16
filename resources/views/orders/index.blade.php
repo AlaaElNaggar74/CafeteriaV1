@@ -23,19 +23,49 @@
             <tbody>
 
 
-                
-
 
                 @foreach($orders as $order)
-                <tr>
-                    <td>{{$order->id}}</td>
-                    <td>{{$order->status}}</td>
-                    <td>{{$order->action}}</td>
-                </tr>
+                    <tr>
+                        
+                        <td>{{$order->created_at}} 
+                            @if($order->status=="Done")
+                              <button  class="btn btn-danger">-</button>
+                          
+                            @else
+                            <button  class="btn btn-danger" onclick={{"viewProducts()"}}>+</button>
+                            @endif
+                            
+                        </td>
+                        <td>{{$order->status}}</td>
+                        <td>{{$order->totalPrice}}</td>
+                        <td>
+                            @if($order->status=="Processing")
+                            <form method="post" action={{route('orders.destroy', $order->id)}}>
+                                @csrf
+                                @method('delete')
+                                    <input type="submit" class="btn btn-danger" value="Cancel">
+                            </form>
+                            @endif
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
             
          </table>
-    </div>
+
+         
+            <div>
+          
+                @foreach($product_order as $product)
+                  <div>
+                    
+                    <img src="{{asset('images/'.$product->image)}}">
+                  </div>
+                @endforeach
+                </div>
+            </div>
+           
+        
+      
 </div>
 @endsection
