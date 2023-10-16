@@ -3,11 +3,7 @@
   <div class="container-fluid">
     <div class="col-md-3 ms-auto mb-3">
       <form action="" method="post">
-        <input
-          class="form-control"
-          id="search"
-          placeholder="Type to search..."
-        />
+        <input class="form-control" id="search" placeholder="Type to search..." />
       </form>
     </div>
     <div class="row">
