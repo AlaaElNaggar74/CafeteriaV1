@@ -11,8 +11,8 @@
       </form>
     </div>
     <div class="row">
-      <div class="indexRight col-md-4">
-        <div class="rig border border-2 border-black">
+      <div class="indexRight col-md-4 border border-2 border-black">
+        <div class="rig ">
           <div class="ta">
             <table class="table">
               <tbody>
