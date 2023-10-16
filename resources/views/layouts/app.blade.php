@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="{{asset('style/adminCheckPage.css')}}">
     <link rel="stylesheet" href="{{asset('style/adminEditProduct.css')}}">
     <link rel="stylesheet" href="{{asset('style/categoryIndex.css')}}">
+    <link rel="stylesheet" href="{{asset('style/categoryEdit.css')}}">
+    <link rel="stylesheet" href="{{asset('style/categoryShow.css')}}">
 
 
     <!-- Scripts -->

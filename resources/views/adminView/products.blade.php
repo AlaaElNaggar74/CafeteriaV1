@@ -21,6 +21,7 @@
             <th>Products</th>
             <th>Price</th>
             <th>Image</th>
+            <th>Categort</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -32,6 +33,7 @@
             <td>{{$product->price}}$</td>
             <td class="imgTable"><img src="{{asset('/images/productsImage/'.$product->image)}}" alt="" class="" />
             </td>
+            <td><a href="{{route('categories.show',$product->category->id)}}">{{$product->category->name}}</a>  </td>
             <td><a href="{{route('destroyProducts',$product->id)}}" class="btn btn-danger">delete</a>
               <a href="{{route('editProduct',$product->id)}}" class="btn btn-danger">edit</a>
               <a href="{{route('showProduct',$product->id)}}" class="btn btn-info">show</a>

@@ -23,10 +23,30 @@
          @error('name') <p class="text-danger">{{$message}}</p> @enderror
 
 
+       
          <div class="mb-1">
+          <label for="categ" class="form-label">Category</label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            name="category_id"
+          >
+            <option selected>Open this select menu</option>
+
+            @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+            {{-- <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option> --}}
+          </select>
+        </div>
+
+
+         {{-- <div class="mb-1">
            <label for="category" class="form-label">category</label>
            <input type="text" class="form-control" id="category" name="category" value="{{old('category')}}" placeholder="Enter Your category" />
-         </div>
+         </div> --}}
 
          {{--
         <div class="mb-1">

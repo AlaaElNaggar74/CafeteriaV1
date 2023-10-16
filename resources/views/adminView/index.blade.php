@@ -1,6 +1,6 @@
 @extends('layouts.app') @section('content')
 <div class="adminHomePage">
-  <div class="container-fluid">
+  <div class="container">
     <div class="col-md-3 ms-auto mb-3">
       <form action="" method="post">
         <input class="form-control" id="search" placeholder="Type to search..." />
