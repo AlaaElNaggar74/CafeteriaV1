@@ -3,7 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\CategoryController;
+<<<<<<< HEAD
 use App\Http\Controllers\orderController;
+=======
+use Illuminate\Support\Facades\Auth;
+
+>>>>>>> 03f2c70ab527a899e453ae69affcffbd9b39a6fc
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +51,7 @@ Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name
 // Route::get("userHome",[productsController::class,"index"])->name("index");
 // Route::get("myOrderUser",[productsController::class,"orders"])->name("userOrder");
 
-Route::resource('categories', CategoryController ::class);
+Route::resource('categories', CategoryController::class);
 
 Route::get("/myorder",[orderController::class,"index"])->name("order.index");
 

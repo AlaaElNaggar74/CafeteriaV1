@@ -16,9 +16,7 @@ class orderController extends Controller
     {
         $user=Auth::id();
 
-        $order = Order::where('user_id', $user)->get();
-
-      
+        $order = Order::where('user_id', $user)->get();     
         return view('orders.index',["orders"=>$order]);
 
        
