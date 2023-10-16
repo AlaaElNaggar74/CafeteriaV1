@@ -51,7 +51,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    @if ( Auth::user()->name != "admin")
+                    @if ( Auth::user()->role != "admin")
                     <ul class="navbar-nav ">
                         <li>
                             <a href="{{route('index')}}" class="linkk text-decoration-none text-black fs-5"> Home</a>
@@ -59,7 +59,7 @@
                             {{-- <a href="" class="px-2 text-decoration-none text-black fs-4"> Home</a> --}}
                         </li>
                         <li>
-                            <a href="{{route('userOrder')}}" class="linkk text-decoration-none text-black fs-5"> MyOrder</a>
+                            <a href="{{route('order.index')}}" class="linkk text-decoration-none text-black fs-5"> MyOrder</a>
 
                             {{-- <a href="" class="px-2 text-decoration-none text-black fs-4">MyOrder</a> --}}
                         </li>

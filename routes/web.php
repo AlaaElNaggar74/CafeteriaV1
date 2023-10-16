@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\orderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +47,8 @@ Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name
 // Route::get("myOrderUser",[productsController::class,"orders"])->name("userOrder");
 
 Route::resource('categories', CategoryController ::class);
+
+Route::get("/myorder",[orderController::class,"index"])->name("order.index");
 
 Auth::routes();
 
