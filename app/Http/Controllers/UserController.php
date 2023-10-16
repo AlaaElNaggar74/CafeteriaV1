@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 //use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Validation\Rule;
+
 class UserController extends Controller
 {
     /**
@@ -44,7 +46,7 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'address' => ['required', 'string', 'min:5'],
-            'password' => ['required', 'string', 'min:8'], 
+            'password' => ['required', 'string', 'min:8', 'confirmed'], 
         ]);
 
         $user = User::create([
@@ -90,7 +92,7 @@ class UserController extends Controller
         $user = User::find($id);
         request()->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($id)],
             'address' => ['required', 'string', 'min:5'],
         ]);
       
