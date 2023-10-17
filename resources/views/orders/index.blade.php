@@ -36,12 +36,13 @@
                               <button  class="btn btn-danger">-</button>
                           
                             @else
-                            <button  class="btn btn-danger" onclick={{"viewProducts()"}}>+</button>
+                            <button  class="btn btn-danger order" id="{{$order->id}}" >+</button>
                             @endif
                             
                         </td>
                         <td>{{$order->status}}</td>
-                        <td>{{$order->totalPrice}}</td>
+                        <td> 
+                        </td>
                         <td>
                             @if($order->status=="Processing")
                             <form method="post" action={{route('orders.destroy', $order->id)}}>
@@ -54,68 +55,88 @@
                     </tr>
                   @endforeach
             
+                 
             </tbody>
             
          </table>
+      
 
-        
-
-        
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
          
-            {{-- <div class="orderItems mt-5">
-                <div class="checkDrink text-center">
-                
-                    @foreach($products as $product) 
-                      
-                        <div>
-                            <div class="drinkPrice">{{$product->price}}</div>
-                    
-                            <img src="{{asset('images/'.$product->image)}}" class="img-fluid rounded-top" alt="" />
-                            <p class="fw-bold">{{$product->price}}</p>
-                            <p class="fw-bold">{{$product->order_id}}</p>
-                        </div>
-                    @endforeach
-                
-                </div>
-            
-                
-            </div> --}}
-            
-                    
-
-            <script>
+         <script>
  
 
-                function viewProducts(){
-                   
-                  
-                   const div = document.createElement("div");                                 
-                  
-                    div.innerHTML = `<div class="orderItems mt-5">
-                            <div class="checkDrink text-center">
-                            
-                            
+          
+               
+             
+               const div = document.createElement("div");   
+               
+              let order=document.querySelectorAll('.order');
 
-                                @foreach($products as $product) 
-                                  console.log({{$products}});
-                                    <div>
-                                        <div class="drinkPrice">{{$product->price}}</div>
-                                
-                                        <img src="{{asset('images/'.$product->image)}}" class="img-fluid rounded-top" alt="" width=50 height=50 />
-                                        <p class="fw-bold">{{$product->price}}</p>
-                                        <p class="fw-bold">{{$product->order_id}}</p>
-                                    </div>
-                                @endforeach
-                            
-                            </div>
+              
+
+              order.forEach(element => {
+                 
+                     element.addEventListener('click',()=>{
+
+                        // console.log(element.id);
+                        var Test_HTML ="";
+                        let Order_id=element.id;
+                       $.ajax({
+                        url: "/test/"+Order_id,
+                        type: "get",
+                        dataType: "json",
+                        success: function(response) {
+                            //console.log(response)
+
+                         $.each(response, function(index)
+                         {
                         
                             
-                        </div> `
+                           Test_HTML += `<div class="orderItems mt-5">
+                                        <div class="checkDrink text-center d-flex justify-content-center align-items-center">
+                                        <div>
+                                            <img src="/images/` + response[index].image +`" class="img-fluid rounded-top" alt="" width=50 height=50 />
+                                           <div class="drinkPrice">`+ response[index].order_id +`</div>
+                                           <p class="fw-bold">`+ response[index].price +`</p>
+           
+                                           
+                                        </div>
+                                
+                                        </div>  
+                                     </div>`
+
+
+                        });
+
+                        console.log(Test_HTML);
+                        div.innerHTML = Test_HTML;
                     document.body.appendChild(div);
-                }
+               
+                            
+                        }
+                    });
+      
+                        
+
+
+
+                        
+
+                       
+                     })
+              });
+                   
             
-            </script>
             
+        
+        </script>
+        
+         
+       
+                    
+
+    </div>
             
       
 </div>

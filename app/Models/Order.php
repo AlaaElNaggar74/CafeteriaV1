@@ -15,7 +15,7 @@ class Order extends Model
         'user_id',
     ];
     
-    function product(){
+    function products(){
         return $this->belongsToMany(Product::class);
     }
 }

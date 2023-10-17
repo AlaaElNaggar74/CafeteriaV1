@@ -63,6 +63,7 @@ Route::resource('categories', CategoryController::class);
 Route::resource('orders', App\Http\Controllers\orderController::class);
 
 Route::get('/filter',[orderController::class,'searchByDate']);
+Route::get('/test/{id}',[orderController::class,'Test']);
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

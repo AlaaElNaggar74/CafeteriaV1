@@ -27,18 +27,57 @@ class orderController extends Controller
        
         $order = Order::where('user_id', $user)->get();   
        
-          $products=DB::table('products')->join('product_order','products.id','=','product_order.product_id')
-          ->join('orders','orders.id','=','product_order.order_id')
-          ->where('orders.user_id',Auth::id())
-          ->get();
- 
+        //   $products=DB::table('products')->join('product_order','products.id','=','product_order.product_id')
+        //   ->join('orders','orders.id','=','product_order.order_id')
+        //   ->where('orders.user_id',Auth::id())
+        //   ->get();
 
           
-
-
-   
-       return view('orders.index',["orders"=>$order,"products"=>$products]);
        
+
+        //dd($products);
+   
+       return view('orders.index',["orders"=>$order]);
+       
+    }
+
+
+    public function Test($Order_id)
+    {
+
+        $order = Order::find($Order_id); 
+      
+       // $productNames = $order->products()->pluck('name');
+        
+        
+        $productDetails = DB::table('products')
+                        ->join('product_order', 'products.id', '=', 'product_order.product_id')
+                        ->join('orders', 'product_order.order_id', '=', 'orders.id')
+                        ->where('orders.id', $Order_id)->get();
+                       
+        
+       
+       // return view("orders.index",["products",$productNames]);
+     
+       //return view('orders.index',["productDetails"=>$productDetails,"orders"=>$order]);
+
+       return $productDetails;
+       
+
+        // $user=Auth::id();
+        
+       
+        // $order = Order::where('user_id', $user)->get();   
+       
+        //    $products=DB::table('products')->join('product_order','products.id','=','product_order.product_id')
+        //   ->join('orders','orders.id','=','product_order.order_id')
+        //   ->where('orders.user_id',Auth::id())
+        //   ->get();
+
+          
+        //   //dd($products);
+        //   return $products;
+
     }
 
     /**
@@ -62,7 +101,13 @@ class orderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('orders.index',['order'=>$order]);
+        $products = DB::table('products')
+        ->join('product_order', 'products.id', '=', 'product_order.product_id')
+        ->join('orders', 'orders.id', '=', 'product_order.order_id')
+        ->where('orders.user_id',Auth::id())
+        ->get();
+
+        return view('orders.index',['order'=>$order,"products"=>$products]);
     }
 
     /**
