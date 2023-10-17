@@ -10,7 +10,7 @@
       <div class=" col-md-4 ">
         <div class="indexRight border border-2 border-black">
 
-       
+       <form >
         <div class="rig ">
           <div class="ta">
             <table class="table">
@@ -70,8 +70,9 @@
           <div class="total text-right">
             <h3>Total: <span>952</span></h3>
           </div>
-          <td><button class="btn btn-danger">Save</button></td>
+          <td><input type="submit"  class="btn btn-danger"/></td>
         </div>
+      </form>
       </div>
       </div>
       {{--
@@ -90,10 +91,12 @@
               <option value="3">Alaa</option>
             </select>
           </div>
+     
         </div>
         <div class="lef m-0 mt-3 mt-md-0">
           <div class="lin"></div>
           <h4 class="mt-4">Products</h4>
+       
           <div class="row overLef">
             @foreach ($products as $product)
             <div class="drink text-center">

@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{asset('style/categoryIndex.css')}}">
     <link rel="stylesheet" href="{{asset('style/categoryEdit.css')}}">
     <link rel="stylesheet" href="{{asset('style/categoryShow.css')}}">
+    <link rel="stylesheet" href="{{asset('style/adminViewPro.css')}}">
 
 
     <!-- Scripts -->

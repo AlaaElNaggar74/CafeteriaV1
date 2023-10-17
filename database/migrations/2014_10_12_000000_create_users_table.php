@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('address')->default('egypt');
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 

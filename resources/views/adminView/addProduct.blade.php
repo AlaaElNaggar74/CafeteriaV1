@@ -31,7 +31,7 @@
             aria-label="Default select example"
             name="category_id"
           >
-            <option selected value="0">Open this select menu</option>
+            <option selected >Category</option>
 
             @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>

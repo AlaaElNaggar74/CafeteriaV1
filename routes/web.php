@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\orderController;
+use App\Http\Controllers\socialiteContr;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -18,7 +19,17 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
+
+    if (Auth::user()) {
+        if ( Auth::user()->role != "admin") {
+            # code...
+            return to_route("indexUser");
+        }
+        return to_route("adminIndex");
+
+    }
     return view('welcome');
+    
 });
 
 
@@ -56,3 +67,5 @@ Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+

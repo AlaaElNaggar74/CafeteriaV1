@@ -3,10 +3,10 @@
     @section('content')
     <div class="adminView">
         <div class="container">
-            {{-- <h1>id is <span>{{$viewItem}}</span></h1> --}}
-           <div class="row justify-content-center align-items-center mt-5 mt-5">
+            <h1>ID is <span>{{$viewItem->id}}</span></h1>
+           <div class="row justify-content-center align-items-center mt-5">
                 <div class=" col-md-5">
-                    {{-- <img src="{{asset('/images/productsImage/'.$viewItem->image)}}" alt="" class="" /> --}}
+                    <img src="{{asset('/images/productsImage/'.$viewItem->image)}}" alt="" class="w-100" />
                 </div>
                 <div class=" col-md-5">
                     <div class="cont">

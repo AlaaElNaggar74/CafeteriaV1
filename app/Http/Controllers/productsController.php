@@ -35,7 +35,7 @@ class productsController extends Controller
     function showProduct($id)
     {
         $product = Product::findorfail($id);
-        return view("adminView.viewProducts", ["viewItem" => $product]);
+        return view("adminView.viewPro", ["viewItem" => $product]);
     }
 
     // Add  Function***********************
@@ -62,6 +62,7 @@ class productsController extends Controller
             'name' => 'required|min:3|unique:products',
             'image' => 'required|unique:products',
             'price' => 'required|max:5',
+            'category_id' => 'required',
         ], [
             "name.required" => "The name Is Required",
             "name.unique" => "The name Is unique",
@@ -72,7 +73,8 @@ class productsController extends Controller
 
             "price.required" => "The price Is Required",
             "price.max" => "The price Max 5 Number",
-
+            
+            "category_id.required" => "The category Is Required",
 
         ]);
 
@@ -98,7 +100,12 @@ class productsController extends Controller
     function editProduct($id)
     {
         $product = Product::findorfail($id);
-        return view("adminView.editProduct", ["editItem" => $product]);
+
+        $categories=Category::all();
+        // dd($category);
+ 
+
+        return view("adminView.editProduct", ["editItem" => $product,"categories"=>$categories]);
     }
 
     //  Update Function***********************
