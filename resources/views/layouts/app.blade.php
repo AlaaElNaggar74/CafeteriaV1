@@ -29,6 +29,9 @@
     <link rel="stylesheet" href="{{asset('style/adminCheckPage.css')}}">
     <link rel="stylesheet" href="{{asset('style/adminEditProduct.css')}}">
     <link rel="stylesheet" href="{{asset('style/categoryIndex.css')}}">
+    <link rel="stylesheet" href="{{asset('style/categoryEdit.css')}}">
+    <link rel="stylesheet" href="{{asset('style/categoryShow.css')}}">
+    <link rel="stylesheet" href="{{asset('style/adminViewPro.css')}}">
 
 
     <!-- Scripts -->
@@ -54,12 +57,12 @@
                     @if ( Auth::user()->role != "admin")
                     <ul class="navbar-nav ">
                         <li>
-                            <a href="{{route('index')}}" class="linkk text-decoration-none text-black fs-5"> Home</a>
+                            <a href="{{route('indexUser')}}" class="linkk text-decoration-none text-black fs-5"> Home</a>
 
                             {{-- <a href="" class="px-2 text-decoration-none text-black fs-4"> Home</a> --}}
                         </li>
                         <li>
-                            <a href="{{route('order.index')}}" class="linkk text-decoration-none text-black fs-5"> MyOrder</a>
+                            <a href="{{route('userOrder')}}" class="linkk text-decoration-none text-black fs-5"> MyOrder</a>
 
                             {{-- <a href="" class="px-2 text-decoration-none text-black fs-4">MyOrder</a> --}}
                         </li>

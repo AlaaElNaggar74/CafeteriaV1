@@ -41,6 +41,15 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+
+    public function redirectTo()
+    {
+            // dd(auth()->user()->role);
+        // return view("auth.login");
+        return route("indexUser");
+
+        
+    }
     /**
      * Get a validator for an incoming registration request.
      *

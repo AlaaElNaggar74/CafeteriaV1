@@ -23,24 +23,54 @@
 
     /* height: 100px; */
 }
-.userOrderPage .orderDetails .orderDet .orderIndex:hover{
-  transform:translateY(-20px);
-}
+
+.userOrderPage .orderItems  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   
+   }
+   .userOrderPage .item  {
+
+   margin: 0 5px;
+   position: relative;
+   width: 50px;
+   transition: .3s;
+   margin: 0 10px;
+   }
+   
+.userOrderPage  .item:hover{
+    transform:translateY(-20px);
+  }
+  
+  
+   
+   .userOrderPage  img{
+       width: 100%;
+       height: 100%;
+      
+   }
+   
+   
+   .userOrderPage .orderItems  .drinkPrice{
+   
+       position: absolute;
+       top: -20px;
+       right: -10px;
+       width: 30px;
+       height: 30px;
+       border-radius: 50%;
+       background-color: #afafaf;
+       color: rgb(255, 255, 255);
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       z-index: 120;
+      
+   }
 
 
 
 
-.adminProductPage .for{
-    overflow-x: auto;
 
-}
-
-.adminProductPage .for table{
-   width: 800px;
-   margin: auto;
-}
-/* .userOrderPage table td {
-display: flex;
-justify-content: center;
-align-items: center;
-} */

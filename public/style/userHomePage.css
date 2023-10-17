@@ -46,6 +46,8 @@
     /* background-color: aqua; */
     overflow-y: auto;
     overflow-x: hidden;
+    padding: 0 30px;
+
 }
 
 .userHomePage .lef img{

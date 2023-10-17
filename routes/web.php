@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\orderController;
+use App\Http\Controllers\socialiteContr;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -18,13 +19,22 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
+
+    if (Auth::user()) {
+        if (Auth::user()->role != "admin") {
+            # code...
+            return to_route("indexUser");
+        }
+        return to_route("adminIndex");
+    }
     return view('welcome');
 });
 
 
-Route::get("/userHome", [productsController::class, "index"])->name("index");
+Route::get("/userHome", [productsController::class, "index"])->name("indexUser");
+//which to use
 Route::get("/myOrderUser", [productsController::class, "orders"])->name("userOrder");
-
+Route::get("/myorder", [orderController::class, "index"])->name("order.index");
 Route::get("/adminHome", [productsController::class, "adminIndex"])->name("adminIndex");
 Route::get("/adminProducts", [productsController::class, "adminProducts"])->name("adminProducts");
 Route::get("/adminProducts/{id}/destroy", [productsController::class, "destroyProducts"])->name("destroyProducts");
@@ -50,6 +60,7 @@ Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name
 
 Route::resource('categories', CategoryController::class);
 
+Route::get("/userOrders", [orderController::class, "index"])->name("order.index");
 Route::get("/myorder", [orderController::class, "index"])->name("order.index");
 
 Auth::routes();

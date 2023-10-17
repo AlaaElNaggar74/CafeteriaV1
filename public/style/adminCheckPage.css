@@ -2,16 +2,7 @@
 .adminCheckPage {
     margin-top: 120px;
 }
-/* .adminCheckPage .orderDetails .orderDet{
-    width: ;
-} */
 
-
-/* .adminCheckPage .orderItems {
- display: flex;
- justify-content: center;
- align-items: center;
-} */
 .adminCheckPage .orderItems  {
  display: flex;
  justify-content: center;

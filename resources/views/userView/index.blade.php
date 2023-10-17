@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="userHomePage">
+ 
     <div class="container-fluid">
         <div class="di col-md-3 ms-auto mb-3">
             <form action="" method="post">
@@ -9,9 +10,14 @@
             </form>
         </div>
         <div class="row">
-            <div class="indexRight col-md-4 ">
-                <div class="rig border border-2 border-black">
+            <div class=" col-md-4 ">
+               <div class=" indexRight border-2 border-black border">
+                {{-- <form action=""> --}}
+                <div class="rig border ">
                     <div class="ta">
+                   
+
+                       
                         <table class="table ">
 
                             <tbody>
@@ -75,14 +81,16 @@
                         <h3>Total: <span>952</span> </h3>
 
                     </div>
-                    <td> <button class="btn btn-danger ">Save</button></td>
+                    <td> <input class="btn btn-danger">Save</input></td>
                 </div>
-
+            {{-- </form> --}}
+            </div>
             </div>
             {{-- <div class="col-md-4 "></div> --}}
             <div class="col-md-8">
                 <div class="lef m-0  mt-3 mt-md-0">
                     <h4 class="">Lastet Orders</h4>
+                
                     <div class="row overLef">
                         <div class="drink text-center ">
                             <div class="drinkPrice">23</div>
