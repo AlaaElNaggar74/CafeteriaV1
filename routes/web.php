@@ -36,6 +36,7 @@ Route::post("/adminEditProduct", [productsController::class, "updateProduct"])->
 
 Route::get("/adminUserDestroy/{id}", [productsController::class, "destroyUser"])->name("destroy");
 Route::get("/adminManualOrder", [productsController::class, "adminManualOrder"])->name("adminManualOrder");
+Route::post('/adminManualOrder/{id}/confirm_order', [productsController::class, 'confirm'])->name('confirm');
 
 Route::get("/adminUser", [productsController::class, "adminUser"])->name("adminUser");
 Route::get("/adminChecks", [productsController::class, "adminChecks"])->name("adminChecks");

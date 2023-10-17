@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\Order;
+
 
 class productsController extends Controller
 {
@@ -147,7 +149,36 @@ class productsController extends Controller
     function adminManualOrder()
     {
 
-        return view("adminView.manualOrder");
+        //$user = Auth()->user();
+ 
+ 
+            $orders = Order::join('users','users.id','orders.user_id')
+                                             ->select('users.name as username','orders.*')
+                                            // ->where('user_id',$user->id)
+                                            // ->get()->keyBy('id');
+                                             ->paginate(5);
+           
+          //dd($orders);
+        return view('adminView.manualOrder',['orders' => $orders])->with('i', (request()->input('page', 1)-1) * 5);
+    }
+
+    public function confirm(Request $request, $id)
+    {
+        $order= Order::findOrFail($id);
+ 
+        // Update the order confirmation field
+        if($order->status === 'Processing')
+        {
+          $order->status = 'Out for Delivery';
+        }
+        else if($order->status === 'Out for Delivery')
+        {
+            $order->status = 'Done';
+        }
+        //$reservation->confirmed_by = auth()->user()->id;
+        $order->save();
+ 
+        return redirect()->route('adminManualOrder');
     }
     function adminChecks()
     {
