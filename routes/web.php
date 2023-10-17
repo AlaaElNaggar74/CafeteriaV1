@@ -18,7 +18,17 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
+
+    if (Auth::user()) {
+        if ( Auth::user()->role != "admin") {
+            # code...
+            return to_route("index");
+        }
+        return to_route("adminIndex");
+
+    }
     return view('welcome');
+    
 });
 
 
@@ -51,6 +61,8 @@ Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name
 Route::resource('categories', CategoryController::class);
 
 Route::resource('orders', App\Http\Controllers\orderController::class);
+
+Route::get('/filter',[orderController::class,'searchByDate']);
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

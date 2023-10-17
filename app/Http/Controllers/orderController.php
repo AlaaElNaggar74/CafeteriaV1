@@ -21,42 +21,22 @@ class orderController extends Controller
         // $order = Order::where('user_id', $user)->get();     
         // return view('orders.index',["orders"=>$order]);
 
-
+      
         $user=Auth::id();
 
        
-
         $order = Order::where('user_id', $user)->get();   
        
-    //    foreach($order as $ord){
-    //        $product_order=DB::table('product_order')->where('order_id',$ord->id)->get();
-          // dd($product_order);
-        //    $products=Product::get();
-        //    //dd($products);
-        //    foreach($products as $product){
-        //     //dd($product);
-        //     dd($ord);
-        //         //$prod=DB::table('product_order')->where('product_id',$product->id)->get();
-        //         $prod = DB::table('products')->where('id',$ord->product_id)->get();  
-        //         dd($prod);
-        //         return view('orders.index',["orders"=>$order,"product_order"=>$prod]);
-        //    }
-
-       
-        
           $products=DB::table('products')->join('product_order','products.id','=','product_order.product_id')
           ->join('orders','orders.id','=','product_order.order_id')
           ->where('orders.user_id',Auth::id())
           ->get();
+ 
+
           
-        //dd($products);
-        //    if($order){
-        //    $products=DB::table('users')->join('orders','users.id','=','orders.user_id')->get();
-        //    dd($products);
-        //    }
-       //}
-       
-       
+
+
+   
        return view('orders.index',["orders"=>$order,"products"=>$products]);
        
     }
@@ -126,4 +106,21 @@ class orderController extends Controller
 
     //     return view('orders.index', compact('get_all_order'));
     // }
+
+    function searchByDate(Request $request){
+
+     
+        $user = auth()->user();
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $orders = Order::where('user_id', $user->id)
+        ->whereBetween('created_at', [$start_date, $end_date])
+        ->get();
+        return view('orders.index', compact('orders'));
+    
+    }
+
+
+
+
 }

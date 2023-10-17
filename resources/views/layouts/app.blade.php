@@ -143,6 +143,8 @@
     <main class="">
         @yield('content')
     </main>
+
+      @yield('product');
     </div>
     <script src="{{asset('js/home.js')}}"></script>
 </body>

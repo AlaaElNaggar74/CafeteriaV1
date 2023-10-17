@@ -6,10 +6,15 @@
     <div class="container">
         <h1 class=" ">My Order </h1>
         <div class="dat ">
-            <span>Date From</span>
-            <input type="date" name="" id="" placeholder="Date From" class="me-4">
-            <span>Date To</span>
-            <input type="date" name="" id="" placeholder="Date To">
+           
+             <form method="get" action="/filter">
+                @csrf
+                 <span>Date From</span>
+                <input type="date" name="start_date" id="" placeholder="Date From" class="me-4">
+                <span>Date To</span>
+                <input type="date" name="end_date" id="" placeholder="Date To">
+                <button type="submit" class="btn btn-primary">filter</button>
+            </form>
         </div>
         <table class="table text-center">
             <thead>
@@ -22,9 +27,8 @@
             </thead>
             <tbody>
 
-
-
-                @foreach($orders as $order)
+              
+                  @foreach($orders as $order)
                     <tr>
                         
                         <td>{{$order->created_at}} 
@@ -48,27 +52,21 @@
                             @endif
                         </td>
                     </tr>
-                @endforeach
+                  @endforeach
+            
             </tbody>
             
          </table>
 
-         
-            {{-- <div>
-          
-                @foreach($products as $product)
-                  <div>
-                    <h2>{{$product->name}}</h2>
-                   
-                  </div>
-                @endforeach
-                </div>
-            </div> --}}
+        
 
-            <div class="orderItems mt-5">
+        
+         
+            {{-- <div class="orderItems mt-5">
                 <div class="checkDrink text-center">
-                  
+                
                     @foreach($products as $product) 
+                      
                         <div>
                             <div class="drinkPrice">{{$product->price}}</div>
                     
@@ -77,13 +75,51 @@
                             <p class="fw-bold">{{$product->order_id}}</p>
                         </div>
                     @endforeach
-                  
-                </div>
-        
                 
-            </div>
-           
-        
+                </div>
+            
+                
+            </div> --}}
+            
+                    
+
+            <script>
+ 
+
+                function viewProducts(){
+                   
+                  
+                   const div = document.createElement("div");                                 
+                  
+                    div.innerHTML = `<div class="orderItems mt-5">
+                            <div class="checkDrink text-center">
+                            
+                            
+
+                                @foreach($products as $product) 
+                                  console.log({{$products}});
+                                    <div>
+                                        <div class="drinkPrice">{{$product->price}}</div>
+                                
+                                        <img src="{{asset('images/'.$product->image)}}" class="img-fluid rounded-top" alt="" width=50 height=50 />
+                                        <p class="fw-bold">{{$product->price}}</p>
+                                        <p class="fw-bold">{{$product->order_id}}</p>
+                                    </div>
+                                @endforeach
+                            
+                            </div>
+                        
+                            
+                        </div> `
+                    document.body.appendChild(div);
+                }
+            
+            </script>
+            
+            
       
 </div>
 @endsection
+
+
+
