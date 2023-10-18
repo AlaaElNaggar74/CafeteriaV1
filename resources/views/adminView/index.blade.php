@@ -10,70 +10,41 @@
       <div class=" col-md-4 ">
         <div class="indexRight border border-2 border-black">
 
-       <form >
-        <div class="rig ">
-          <div class="ta">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th>Cofe</th>
-                  <td>9</td>
-                  <td class="d-flex align-items-center justify-content-center">
-                    <button class="btn btn-danger mx-1">+</button>
-                    <span class="btn btn-info mx-1">-</span>
-                  </td>
-                  <td>25</td>
-                  <td><button class="btn btn-danger">x</button></td>
-                </tr>
+          <form>
+            <div class="rig ">
+              <div class="ta">
+                <table class="table">
+                  <tbody class="tableBody">
 
-                <tr>
-                  <th>Tea</th>
-                  <td>7</td>
-                  <td class="d-flex align-items-center justify-content-center">
-                    <button class="btn btn-danger mx-1">+</button>
-                    <span class="btn btn-info mx-1">-</span>
-                  </td>
-                  <td>25</td>
-                  <td><button class="btn btn-danger">x</button></td>
-                </tr>
 
-                <tr>
-                  <th>Orange</th>
-                  <td>5</td>
-                  <td class="d-flex align-items-center justify-content-center">
-                    <button class="btn btn-danger mx-1">+</button>
-                    <span class="btn btn-info mx-1">-</span>
-                  </td>
-                  <td>25</td>
-                  <td><button class="btn btn-danger">x</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="notes my-3">
-            <h4 for="are" class="form-label">Notes</h4>
-            <textarea class="form-control" id="are" rows="3"></textarea>
-          </div>
 
-          <div class="select d-flex align-items-center">
-            <h4 for="are" class="form-label mb-0 me-2">Room</h4>
+                  </tbody>
+                </table>
+              </div>
+              <div class="notes my-3">
+                <h4 for="are" class="form-label">Notes</h4>
+                <textarea class="form-control" id="are" rows="3"></textarea>
+              </div>
 
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
+              <div class="select d-flex align-items-center">
+                <h4 for="are" class="form-label mb-0 me-2">Room</h4>
 
-          <div class="lin"></div>
-          <div class="total text-right">
-            <h3>Total: <span>952</span></h3>
-          </div>
-          <td><input type="submit"  class="btn btn-danger"/></td>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+
+              <div class="lin"></div>
+              <div class="total text-right">
+                <h3>Total: <span>952</span></h3>
+              </div>
+              <td><input type="submit" class="btn btn-danger" /></td>
+            </div>
+          </form>
         </div>
-      </form>
-      </div>
       </div>
       {{--
       <div class="col-md-4"></div>
@@ -91,15 +62,15 @@
               <option value="3">Alaa</option>
             </select>
           </div>
-     
+
         </div>
         <div class="lef m-0 mt-3 mt-md-0">
           <div class="lin"></div>
           <h4 class="mt-4">Products</h4>
-       
-          <div class="row overLef">
+
+          <div class="selected row overLef">
             @foreach ($products as $product)
-            <div class="drink text-center">
+            <div data-item-id="{{$product->id}}" id="{{$product->id}}" class="drink text-center">
               <div class="drinkPrice">{{$product->price}}</div>
               <img src="{{asset('/images/productsImage/'.$product->image)}}" alt="" class="" />
 
@@ -197,5 +168,8 @@
     </div>
   </div>
 </div>
+<script>
+  const products = @json($products);
+</script>
 <script src="{{asset('js/index.js')}}"></script>
 @endsection
