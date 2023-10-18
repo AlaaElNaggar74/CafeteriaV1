@@ -23,14 +23,13 @@
                             <thead>
                                 <tr>
                                 <th>No</th>
-                                <th >Order Date</th>
-                                <th >TotalPrice</th>
-                                <th >comment</th>
-                                <th >username</th>
-                                <th >Status</th>
-                                {{-- <th >Action</th>--}}
-                               {{-- <th >Edit</th>--}}
-                               {{-- <th >Delete</th>--}}
+                                <th>Order Date</th>
+                                <th>Products</th>
+                                <th>TotalPrice</th>
+                                <th>comment</th>
+                                <th>username</th>
+                                <th>Status</th>
+                        
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,6 +37,18 @@
                                         <tr>
                                             <td>{{++$i}}</td>
                                             <td style="">{{$order->created_at}}</td>
+                                            <td>
+                                                <div class="row">
+                                                @foreach ($order->product as $product)
+                                                <div class="col-md-4">
+                                                    <img class="img-fluid rounded" src="{{asset('images/'.$product->image)}}"  width="30%">
+                                                    <span class="text-danger fw-bold">{{$product->name}}</span>
+                                                </div>
+
+                                                @endforeach  
+                                                </div>        
+                                            
+                                            </td>
                                             <td style="">{{$order->totalPrice}}</td>
                                             <td style="">{{$order->comment}}</td>
                                             <td style="">{{$order->username}}</td>
@@ -55,22 +66,7 @@
                                                 </form>
                                                                 
                                             </td>
-                                        {{--
-                                            <td style="">{{$order->action}}</td>
-
-                                            <td>
-                                                <a class="btn" href="">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(13, 98, 241, 1);"><path d="M15 11h7v2h-7zm1 4h6v2h-6zm-2-8h8v2h-8zM4 19h10v-1c0-2.757-2.243-5-5-5H7c-2.757 0-5 2.243-5 5v1h2zm4-7c1.995 0 3.5-1.505 3.5-3.5S9.995 5 8 5 4.5 6.505 4.5 8.5 6.005 12 8 12z"></path></svg>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <form action="" method="post" onSubmit="return confirm('Are You Sure To Delete This User?')">
-                                                    @csrf
-                                                    @method("DELETE")
-                                                    <button class="btn btn-sm bg-transparent"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="fill: rgba(245, 8, 8, 1);"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg></button>
-                                                </form>
-                                            </td>
-                                        --}}     
+                                      
                                         </tr>
                                     @endforeach
                                     
