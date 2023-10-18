@@ -13,7 +13,7 @@
        <form >
         <div class="rig ">
           <div class="ta">
-            <table class="table">
+            <table >
               <tbody>
                 <tr>
                   <th>Cofe</th>
@@ -38,7 +38,7 @@
                 </tr>
 
                 <tr>
-                  <th>Orange</th>
+                  <th>Orang</th>
                   <td>5</td>
                   <td class="d-flex align-items-center justify-content-center">
                     <button class="btn btn-danger mx-1">+</button>

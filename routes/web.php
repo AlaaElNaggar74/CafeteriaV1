@@ -5,6 +5,7 @@ use App\Http\Controllers\productsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\socialiteContr;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -62,6 +63,16 @@ Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name
 Route::resource('categories', CategoryController::class);
 
 Route::get("/userOrders",[orderController::class,"index"])->name("order.index");
+
+
+Route::get("/userOrders",[orderController::class,"index"])->name("order.index");
+
+
+//Strip
+
+Route::get("/checkOut",[StripeController::class,"checkOut"])->name("checkOut");
+Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+Route::get('/success', 'App\Http\Controllers\StripeController@success')->name('success');
 
 Auth::routes();
 
