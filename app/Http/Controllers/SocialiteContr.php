@@ -11,22 +11,23 @@ use Illuminate\Support\Facades\Auth;
 
 class SocialiteContr extends Controller
 {
-    public function  redirectGoogle(){
+    public function  redirectGoogle()
+    {
 
         return Socialite::driver('google')->redirect();
-       }
-       
-       public function handleGoogleCallback()
+    }
 
-       {
-           $user = Socialite::driver('google')->stateless()->user();
-   
-           $finduser = User::where('social_id', $user->id)->first();
-   
-           if ($finduser) {
-               Auth::login($finduser);
-               return redirect("/userHome");
-           } else {
+    public function handleGoogleCallback()
+
+    {
+        $user = Socialite::driver('google')->stateless()->user();
+
+        $finduser = User::where('social_id', $user->id)->first();
+
+        if ($finduser) {
+            Auth::login($finduser);
+            return redirect("/userHome");
+        } else {
             $newUser = User::updateOrCreate([
                 'social_id' => $user->id,
             ], [
