@@ -77,7 +77,7 @@
                             <a href="{{route('adminProducts')}}" class="linkk px-2 text-decoration-none text-black fs-5">Products</a>
                         </li>
                         <li>
-                            <a href="{{route('adminUser')}}" class="linkk px-2 text-decoration-none text-black fs-5">Users</a>
+                            <a href="{{route('Users.index')}}" class="linkk px-2 text-decoration-none text-black fs-5">Users</a>
                         </li>
                         <li>
                             <a href="{{route('adminManualOrder')}}" class="linkk px-2 text-decoration-none text-black fs-5">Manual Order</a>

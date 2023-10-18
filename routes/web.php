@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\socialiteContr;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,12 +48,12 @@ Route::post("/adminEditProduct", [productsController::class, "updateProduct"])->
 Route::get("/adminUserDestroy/{id}", [productsController::class, "destroyUser"])->name("destroy");
 Route::get("/adminManualOrder", [productsController::class, "adminManualOrder"])->name("adminManualOrder");
 
-Route::get("/adminUser", [productsController::class, "adminUser"])->name("adminUser");
+// Route::get("/adminUser", [productsController::class, "adminUser"])->name("adminUser");
 Route::get("/adminChecks", [productsController::class, "adminChecks"])->name("adminChecks");
 Route::get("/adminAddUser", [productsController::class, "addUser"])->name("addUser");
 Route::get("/adminUserView/{id}", [productsController::class, "view"])->name("view");
 Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name("edit");
-
+Route::resource('Users', UserController::class);
 // Route::get("userHome",[productsController::class,"index"])->name("index");
 // Route::get("myOrderUser",[productsController::class,"orders"])->name("userOrder");
 // Route::get("userHome",[productsController::class,"index"])->name("index");
