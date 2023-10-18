@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="adminUserPage">
+<div style="margin-top: 120px;">
    <div class="container">
   
     <div class="row">
