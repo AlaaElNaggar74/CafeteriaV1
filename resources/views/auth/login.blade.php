@@ -81,9 +81,10 @@
                                 <div class="text-center  m-auto">
                                     <button type="submit" class="btn btn-success my-1">
                                         {{ __('Login') }}
-                                        <button type="google" class="btn btn-success ms-1">
-                                            {{ __('Google') }}
-                                        </button>
+                                    </button>
+                                    <a href="/auth/google" class="btn btn-primary my-1">
+                                        Google
+                                    </a>
 
 
                                 </div>
