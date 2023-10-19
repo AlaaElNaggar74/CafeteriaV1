@@ -1,10 +1,11 @@
 @extends('layouts.app') @section('content')
-<div class="adminHomePage">
+<form method="Post" action="{{route('Order.store')}}" class="adminHomePage">
+  @csrf
   <div class="container-fluid">
     <div class="col-md-3 ms-auto mb-3">
-      <form action="" method="post">
+      <div>
         <input class="form-control" id="search" placeholder="Type to search..." />
-      </form>
+      </div>
     </div>
     <div class="row">
       <div class=" col-md-4 ">
@@ -39,7 +40,8 @@
 
               <div class="lin"></div>
               <div class="total text-right">
-                <h3>Total: <span>952</span></h3>
+                <h3>Total: <span id="finalPrice">0</span></h3>
+
               </div>
               <td><input type="submit" class="btn btn-danger" /></td>
             </div>
@@ -167,7 +169,7 @@
       </div>
     </div>
   </div>
-</div>
+</form>
 <script>
   const products = @json($products);
 </script>
