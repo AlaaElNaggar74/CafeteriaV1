@@ -6,7 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\socialiteContr;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\UserOrder;
+use App\Http\Controllers\UserOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ Route::get("/adminEditProduct/{id}", [productsController::class, "editProduct"])
 Route::post("/adminAddProduct", [productsController::class, "store"])->name("storeProduct");
 Route::post("/adminEditProduct", [productsController::class, "updateProduct"])->name("updateProduct");
 
-Route::post("/addOrder", [UserOrder::class, "store"])->name("Order.store");
+Route::post("/addOrder", [UserOrderController::class, "store"])->name("Order.store");
 Route::get("/adminUserDestroy/{id}", [productsController::class, "destroyUser"])->name("destroy");
 Route::get("/adminManualOrder", [productsController::class, "adminManualOrder"])->name("adminManualOrder");
 

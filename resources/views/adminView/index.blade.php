@@ -24,7 +24,7 @@
               </div>
               <div class="notes my-3">
                 <h4 for="are" class="form-label">Notes</h4>
-                <textarea class="form-control" id="are" rows="3"></textarea>
+                <textarea class="form-control" id="are" name="comment" rows="3"></textarea>
               </div>
 
               <div class="select d-flex align-items-center">
@@ -55,13 +55,13 @@
         <div class="addTouser">
           <h3>Add To User</h3>
           <div class="mb-3 d-flex align-items-center col-md-3 m-auto">
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" name="userID" aria-label="Default select example">
               <option selected>select User</option>
               <option value="1">Aya</option>
               <option value="2">Noor</option>
               <option value="3">Norhan</option>
-              <option value="3">Mostafa</option>
-              <option value="3">Alaa</option>
+              <option value="4">Mostafa</option>
+              <option value="5">Alaa</option>
             </select>
           </div>
 
