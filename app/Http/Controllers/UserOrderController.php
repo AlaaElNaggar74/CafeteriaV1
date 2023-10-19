@@ -21,7 +21,13 @@ class UserOrderController extends Controller
         $product_id = \request()->get("productID");
         $quantity = \request()->get("quantity");
         $userID = \request()->get("userID");
-        // dd($product_id);
+        $orderTotalPrice = 0;
+        for ($i = 0; $i < count($product_id); $i++) {
+            $products = Product::findorfail($product_id[$i]);
+            $orderTotalPrice = $orderTotalPrice + ($products->price * $quantity[$i]);
+        }
+
+        // dd($products);
 
         \request()->validate([
             'quantity' => 'required|array|min:1',
@@ -32,7 +38,7 @@ class UserOrderController extends Controller
 
         $order = new Order();
         $order->comment = $comment;
-        $order->totalPrice = intval($quantity);
+        $order->totalPrice = $orderTotalPrice;
         $order->user_id = $userID;
 
         $order->save();
