@@ -8,6 +8,7 @@ use App\Http\Controllers\socialiteContr;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserOrderController;
+use App\Http\Controllers\checkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,7 @@ Route::get("/adminManualOrder", [orderController::class, "adminManualOrder"])->n
 Route::post('/adminManualOrder/{id}/confirm_order', [orderController::class, 'confirm'])->name('confirm');
 
 // Route::get("/adminUser", [productsController::class, "adminUser"])->name("adminUser");
-Route::get("/adminChecks", [productsController::class, "adminChecks"])->name("adminChecks");
+//Route::get("/adminChecks", [productsController::class, "adminChecks"])->name("adminChecks");
 Route::get("/adminAddUser", [productsController::class, "addUser"])->name("addUser");
 Route::get("/adminUserView/{id}", [productsController::class, "view"])->name("view");
 Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name("edit");
@@ -64,6 +65,14 @@ Route::resource('Users', UserController::class);
 
 Route::resource('categories', CategoryController::class);
 
+Route::resource('orders', App\Http\Controllers\orderController::class);
+
+Route::get('/filter', [orderController::class, 'searchByDate']);
+Route::get('/filterAdmin', [checkController::class, 'searchByDate']);
+Route::get('/test/{id}', [orderController::class, 'Test']);
+Route::get('/showOrders/{id}', [checkController::class, 'showOrders']);
+Route::get('/showProducts/{id}', [checkController::class, 'showProducts']);
+Route::get('/checks', [checkController::class, 'index'])->name("checks");
 Route::get("/userOrders", [orderController::class, "index"])->name("order.index");
 Route::get("/myorder", [orderController::class, "index"])->name("order.index");
 

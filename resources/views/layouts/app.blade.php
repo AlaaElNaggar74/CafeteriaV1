@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="{{asset('style/categoryEdit.css')}}">
     <link rel="stylesheet" href="{{asset('style/categoryShow.css')}}">
     <link rel="stylesheet" href="{{asset('style/adminViewPro.css')}}">
-
+    <link rel="stylesheet" href="{{asset('style/checks.css')}}">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -62,7 +62,7 @@
                             {{-- <a href="" class="px-2 text-decoration-none text-black fs-4"> Home</a> --}}
                         </li>
                         <li>
-                            <a href="{{route('userOrder')}}" class="linkk text-decoration-none text-black fs-5"> MyOrder</a>
+                            <a href="{{route('orders.index')}}" class="linkk text-decoration-none text-black fs-5"> MyOrder</a>
 
                             {{-- <a href="" class="px-2 text-decoration-none text-black fs-4">MyOrder</a> --}}
                         </li>
@@ -83,7 +83,7 @@
                             <a href="{{route('adminManualOrder')}}" class="linkk px-2 text-decoration-none text-black fs-5">Manual Order</a>
                         </li>
                         <li>
-                            <a href="{{route('adminChecks')}}" class="linkk px-2 text-decoration-none text-black fs-5">Checks</a>
+                            <a href="{{route('checks')}}" class="linkk px-2 text-decoration-none text-black fs-5">Checks</a>
                         </li>
                     </ul>
 
@@ -146,6 +146,8 @@
     <main class="">
         @yield('content')
     </main>
+
+    @yield('product');
     </div>
     <script src="{{asset('js/home.js')}}"></script>
 

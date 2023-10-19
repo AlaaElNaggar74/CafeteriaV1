@@ -11,12 +11,15 @@ class Order extends Model
 
     protected $fillable = [
         'totalPrice',
-        'action',
         'comment',
         'user_id',
     ];
-    
-    function product(){
-        return $this->belongsToMany(Product::class,'product_order','order_id','product_id');
+    function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    function product()
+    {
+        return $this->belongsToMany(Product::class, 'product_order', 'order_id', 'product_id');
     }
 }

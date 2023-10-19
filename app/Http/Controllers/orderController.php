@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\Product;
+use Carbon\Carbon;
 
 class orderController extends Controller
 {
@@ -15,12 +17,37 @@ class orderController extends Controller
      */
     public function index()
     {
-        $user=Auth::id();
 
-        $order = Order::where('user_id', $user)->get();     
-        return view('orders.indexPage',["orders"=>$order]);
 
-       
+        $user = Auth::id();
+
+
+        $order = Order::where('user_id', $user)->get();
+
+        return view('orders.index', ["orders" => $order]);
+    }
+
+
+    public function Test($Order_id)
+    {
+
+        $order = Order::find($Order_id);
+
+        // $productNames = $order->products()->pluck('name');
+
+
+        $productDetails = DB::table('products')
+            ->join('product_order', 'products.id', '=', 'product_order.product_id')
+            ->join('orders', 'product_order.order_id', '=', 'orders.id')
+            ->where('orders.id', $Order_id)->get();
+
+
+
+        // return view("orders.index",["products",$productNames]);
+
+        //return view('orders.index',["productDetails"=>$productDetails,"orders"=>$order]);
+
+        return $productDetails;
     }
 
     /**
@@ -36,21 +63,47 @@ class orderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // $productDetails = DB::table('products')
+        // ->join('product_order', 'products.id', '=', 'product_order.product_id')
+        // ->join('orders', 'product_order.order_id', '=', 'orders.id')
+        // ->where('orders.user_id',Auth::id())->get();
+
+        // dd($productDetails);
+
+
+        // foreach($productDetails as $productprice){
+        //     foreach($products as $product){
+        //         if($productprice->product_id==$product->id)
+        //             $productprice->totalPrice+=$productprice->quantity * $productprice->price;
+
+        //        else{
+        //         $productprice->totalPrice=$product->price;
+        //        }
+        //     }
+
+        // }
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Order $order)
     {
-        //
+        $products = DB::table('products')
+            ->join('product_order', 'products.id', '=', 'product_order.product_id')
+            ->join('orders', 'orders.id', '=', 'product_order.order_id')
+            ->where('orders.user_id', Auth::id())
+            ->get();
+
+        return view('orders.index', ['order' => $order, "products" => $products]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Order $order)
     {
         //
     }
@@ -58,7 +111,7 @@ class orderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -66,57 +119,65 @@ class orderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return to_route("orders.index");
     }
 
 
-    //// Admin => Orders
 
+
+    function searchByDate(Request $request)
+    {
+
+
+        $user = auth()->user();
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $orders = Order::where('user_id', $user->id)
+            ->whereBetween('created_at', [$start_date, $end_date])
+            ->get();
+        return view('orders.index', compact('orders'));
+    }
     function adminManualOrder()
     {
 
         //$user = Auth()->user();
- 
- 
-            $orders = Order::join('users','users.id','orders.user_id')
-                                             ->select('users.name as username','orders.*')
-                                            // ->where('user_id',$user->id)
-                                            // ->get()->keyBy('id');
-                                               ->paginate(5);
 
-            foreach($orders as $order)
-            {
-                /*
+
+        $orders = Order::join('users', 'users.id', 'orders.user_id')
+            ->select('users.name as username', 'orders.*')
+            // ->where('user_id',$user->id)
+            // ->get()->keyBy('id');
+            ->paginate(5);
+
+        foreach ($orders as $order) {
+            /*
                 $productDetails = Product::join('product_order', 'products.id', '=', 'product_order.product_id')
                                          ->join('orders', 'product_order.order_id', '=', 'orders.id')
                                          ->where('orders.id', $order->id)->get();  
                                          dd($productDetails);
                                          */
-                                                            
-            }    
-            return view('adminView.manualOrder',['orders' => $orders])->with('i', (request()->input('page', 1)-1) * 5);                                                           
-         
-       // return view('adminView.manualOrder',['orders' => $orders,'productDetails' => $productDetails])->with('i', (request()->input('page', 1)-1) * 5);
+        }
+        return view('adminView.manualOrder', ['orders' => $orders])->with('i', (request()->input('page', 1) - 1) * 5);
+
+        // return view('adminView.manualOrder',['orders' => $orders,'productDetails' => $productDetails])->with('i', (request()->input('page', 1)-1) * 5);
     }
 
     public function confirm(Request $request, $id)
     {
-        $order= Order::findOrFail($id);
- 
+        $order = Order::findOrFail($id);
+
         // Update the order confirmation field
-        if($order->status === 'Processing')
-        {
-          $order->status = 'Out for Delivery';
-        }
-        else if($order->status === 'Out for Delivery')
-        {
+        if ($order->status === 'Processing') {
+            $order->status = 'Out for Delivery';
+        } else if ($order->status === 'Out for Delivery') {
             $order->status = 'Done';
         }
         //$reservation->confirmed_by = auth()->user()->id;
         $order->save();
- 
+
         return redirect()->route('adminManualOrder');
     }
 }
