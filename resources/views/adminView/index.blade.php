@@ -1,10 +1,13 @@
 @extends('layouts.app') @section('content')
-<div class="adminHomePage">
+@error('quantity') <p class="text-danger">{{$message}}</p> @enderror
+
+<form method="Post" action="{{route('Order.store')}}" class="adminHomePage">
+  @csrf
   <div class="container-fluid">
     <div class="col-md-3 ms-auto mb-3">
-      <form action="" method="post">
+      <div>
         <input class="form-control" id="search" placeholder="Type to search..." />
-      </form>
+      </div>
     </div>
     <div class="row">
       <div class=" col-md-4 ">
@@ -23,7 +26,7 @@
               </div>
               <div class="notes my-3">
                 <h4 for="are" class="form-label">Notes</h4>
-                <textarea class="form-control" id="are" rows="3"></textarea>
+                <textarea class="form-control" id="are" name="comment" rows="3"></textarea>
               </div>
 
               <div class="select d-flex align-items-center">
@@ -39,7 +42,8 @@
 
               <div class="lin"></div>
               <div class="total text-right">
-                <h3>Total: <span>952</span></h3>
+                <h3>Total: <span id="finalPrice">0</span></h3>
+
               </div>
               <td><input type="submit" class="btn btn-danger" /></td>
             </div>
@@ -53,13 +57,11 @@
         <div class="addTouser">
           <h3>Add To User</h3>
           <div class="mb-3 d-flex align-items-center col-md-3 m-auto">
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" name="userID" aria-label="Default select example">
               <option selected>select User</option>
-              <option value="1">Aya</option>
-              <option value="2">Noor</option>
-              <option value="3">Norhan</option>
-              <option value="3">Mostafa</option>
-              <option value="3">Alaa</option>
+              @foreach ($users as $user)
+              <option value="{{$user->id}}">{{$user->name}}</option>
+              @endforeach
             </select>
           </div>
 
@@ -167,7 +169,7 @@
       </div>
     </div>
   </div>
-</div>
+</form>
 <script>
   const products = @json($products);
 </script>

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
-
+use App\Models\User;
 
 class productsController extends Controller
 {
@@ -152,7 +152,8 @@ class productsController extends Controller
     function adminIndex()
     {
         $products = Product::all();
-        return view("adminView.index", ["products" => $products]);
+        $users = User::all();
+        return view("adminView.index", ["products" => $products, "users" => $users]);
     }
 
 
