@@ -41,8 +41,13 @@
                             
                         </td>
                         <td>{{$order->status}}</td>
-                        <td> 
+
+                        <td>
+                         
                         </td>
+                      
+                        
+                         
                         <td>
                             @if($order->status=="Processing")
                             <form method="post" action={{route('orders.destroy', $order->id)}}>
@@ -64,11 +69,7 @@
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
          
          <script>
- 
-
-          
-               
-             
+    
                const div = document.createElement("div");   
                
               let order=document.querySelectorAll('.order');
@@ -109,7 +110,7 @@
 
                         });
 
-                        console.log(Test_HTML);
+                        
                         div.innerHTML = Test_HTML;
                     document.body.appendChild(div);
                

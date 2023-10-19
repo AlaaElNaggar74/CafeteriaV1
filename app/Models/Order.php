@@ -15,7 +15,13 @@ class Order extends Model
         'user_id',
     ];
     
+    function user(){
+        return $this->belongsTo(User::class);
+    }
+
     function products(){
         return $this->belongsToMany(Product::class);
     }
+
+
 }

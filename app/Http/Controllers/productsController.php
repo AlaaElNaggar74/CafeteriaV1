@@ -149,11 +149,11 @@ class productsController extends Controller
 
         return view("adminView.manualOrder");
     }
-    function adminChecks()
-    {
+    // function adminChecks()
+    // {
 
-        return view("adminView.checks");
-    }
+    //     return view("adminView.checks");
+    // }
     function addUser()
     {
 

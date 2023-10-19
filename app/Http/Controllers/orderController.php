@@ -16,27 +16,13 @@ class orderController extends Controller
      */
     public function index()
     {
-        // $user=Auth::id();
-
-        // $order = Order::where('user_id', $user)->get();     
-        // return view('orders.index',["orders"=>$order]);
-
+      
       
         $user=Auth::id();
 
        
         $order = Order::where('user_id', $user)->get();   
-       
-        //   $products=DB::table('products')->join('product_order','products.id','=','product_order.product_id')
-        //   ->join('orders','orders.id','=','product_order.order_id')
-        //   ->where('orders.user_id',Auth::id())
-        //   ->get();
-
-          
-       
-
-        //dd($products);
-   
+               
        return view('orders.index',["orders"=>$order]);
        
     }
@@ -63,20 +49,7 @@ class orderController extends Controller
 
        return $productDetails;
        
-
-        // $user=Auth::id();
-        
-       
-        // $order = Order::where('user_id', $user)->get();   
-       
-        //    $products=DB::table('products')->join('product_order','products.id','=','product_order.product_id')
-        //   ->join('orders','orders.id','=','product_order.order_id')
-        //   ->where('orders.user_id',Auth::id())
-        //   ->get();
-
-          
-        //   //dd($products);
-        //   return $products;
+   
 
     }
 
@@ -93,7 +66,27 @@ class orderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        // $productDetails = DB::table('products')
+        // ->join('product_order', 'products.id', '=', 'product_order.product_id')
+        // ->join('orders', 'product_order.order_id', '=', 'orders.id')
+        // ->where('orders.user_id',Auth::id())->get();
+
+        // dd($productDetails);
+
+
+        // foreach($productDetails as $productprice){
+        //     foreach($products as $product){
+        //         if($productprice->product_id==$product->id)
+        //             $productprice->totalPrice+=$productprice->quantity * $productprice->price;
+
+        //        else{
+        //         $productprice->totalPrice=$product->price;
+        //        }
+        //     }
+           
+        // }
+            
     }
 
     /**
@@ -136,21 +129,7 @@ class orderController extends Controller
     }
 
 
-    // public function searchByDate(Request $request)
-    // {
-    //     this->validate($request,[
-    //     'start_date' => 'required|date',
-    //     'end_date' => 'required|date|before_or_equal:start_date',
-    //     ]);
-
-    //     $start = Carbon::parse($request->start_date);
-    //     $end = Carbon::parse($request->end_date);
-
-    //     $get_all_order = Order::whereDate('created_at','<=',$end->format('m-d-y'))
-    //     ->whereDate('created_at','>=',$start->format('m-d-y'));
-
-    //     return view('orders.index', compact('get_all_order'));
-    // }
+   
 
     function searchByDate(Request $request){
 

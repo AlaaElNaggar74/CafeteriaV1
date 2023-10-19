@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{asset('style/adminCheckPage.css')}}">
     <link rel="stylesheet" href="{{asset('style/adminEditProduct.css')}}">
     <link rel="stylesheet" href="{{asset('style/categoryIndex.css')}}">
-
+    <link rel="stylesheet" href="{{asset('style/checks.css')}}">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -80,7 +80,7 @@
                             <a href="{{route('adminManualOrder')}}" class="linkk px-2 text-decoration-none text-black fs-5">Manual Order</a>
                         </li>
                         <li>
-                            <a href="{{route('adminChecks')}}" class="linkk px-2 text-decoration-none text-black fs-5">Checks</a>
+                            <a href="{{route('checks')}}" class="linkk px-2 text-decoration-none text-black fs-5">Checks</a>
                         </li>
                     </ul>
 

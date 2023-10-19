@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\orderController;
+use App\Http\Controllers\checkController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -48,7 +49,7 @@ Route::get("/adminUserDestroy/{id}", [productsController::class, "destroyUser"])
 Route::get("/adminManualOrder", [productsController::class, "adminManualOrder"])->name("adminManualOrder");
 
 Route::get("/adminUser", [productsController::class, "adminUser"])->name("adminUser");
-Route::get("/adminChecks", [productsController::class, "adminChecks"])->name("adminChecks");
+// Route::get("/adminChecks", [productsController::class, "adminChecks"])->name("adminChecks");
 Route::get("/adminAddUser", [productsController::class, "addUser"])->name("addUser");
 Route::get("/adminUserView/{id}", [productsController::class, "view"])->name("view");
 Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name("edit");
@@ -63,7 +64,10 @@ Route::resource('categories', CategoryController::class);
 Route::resource('orders', App\Http\Controllers\orderController::class);
 
 Route::get('/filter',[orderController::class,'searchByDate']);
+Route::get('/filterAdmin',[checkController::class,'searchByDate']);
 Route::get('/test/{id}',[orderController::class,'Test']);
+Route::get('/showOrders/{id}',[checkController::class,'showOrders']);
+Route::get('/checks',[checkController::class,'index'])->name("checks");
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
