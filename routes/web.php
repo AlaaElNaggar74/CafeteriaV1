@@ -67,6 +67,7 @@ Route::get('/filter',[orderController::class,'searchByDate']);
 Route::get('/filterAdmin',[checkController::class,'searchByDate']);
 Route::get('/test/{id}',[orderController::class,'Test']);
 Route::get('/showOrders/{id}',[checkController::class,'showOrders']);
+Route::get('/showProducts/{id}',[checkController::class,'showProducts']);
 Route::get('/checks',[checkController::class,'index'])->name("checks");
 Auth::routes();
 

@@ -84,11 +84,8 @@
 
 
   <div class="mt-5">
-    <div class="d-flex justify-content-center align-items-center">
-      {{-- @foreach($productDetails as $product)
-        <img src="{{asset('/images/'.$product->image)}}" alt="" class="" width="50" height="50"/>
-        <p>{{$product->price}}
-      @endforeach --}}
+    <div class="d-flex justify-content-center align-items-center" id="products">
+          
     </div>
 
   </div>
@@ -117,7 +114,7 @@
                  type: "get",
                  dataType: "json",
                  success: function(response) {
-                     console.log(response)
+                     //console.log(response)
 
                      Test_HTML=`<table class="table text-center ">
                               <thead>
@@ -126,25 +123,27 @@
                                     <th>totalAmount</th>      
                                   </tr>
                               </thead>
-                              `
+                              <tbody> `
                                 
 
                   $.each(response, function(index)
                   {
                  
-                     
-                   Test_HTML +=`<tbody>
-                                 <tr>
-                                  <td>`+ response[index].created_at+ `</td>  
-                                  <td>`+ response[index].totalPrice + `</td> 
-                                </tr>
-
-                              
-                              </tbody>                          
                     
-                          </table>`;
+                   Test_HTML +=`
+                                 <tr>
+                                  <td>
+                                   <button class="btn btn-danger product" id="${response[index].id}">+</button>
+                                    ${response[index].created_at}</td>  
+                                  <td>${response[index].totalPrice}</td> 
+                                </tr>
+                                `;
 
                  });
+
+                    `
+                    </tbody>  
+                    </table>`
 
                  //console.log(Test_HTML);
                  div.innerHTML = Test_HTML;
@@ -166,37 +165,77 @@
 
 
 
+<script>
 
-  {{-- <script>
-
-
+  const div = document.createElement("div");   
    
-      
-  let order=document.querySelectorAll('.order');
+  let product=document.querySelectorAll('.product');
 
+  
+
+
+
+
+  product.forEach(element => {
+     
+         element.addEventListener('click',()=>{
+
+            // console.log(element.id);
+            var Test_HTML ="";
+            let order_id=element.id;
+           $.ajax({
+            url: "/showProducts/"+order_id,
+            type: "get",
+            dataType: "json",
+            success: function(response) {
+                console.log(response)
+
+                Test_HTML=`<table class="table text-center ">
+                         <thead>
+                             <tr>
+                               <th>orderDate</th>
+                               <th>totalAmount</th>      
+                             </tr>
+                         </thead>
+                         `
+                           
+
+             $.each(response, function(index)
+             {
+               console.log(response);
+                
+              Test_HTML +=`<div class="orderItems mt-5">
+                              <div class="checkDrink text-center d-flex justify-content-center align-items-center">
+                                <div>
+                                    <img src="/images/` + response[index].image +`" class="img-fluid rounded-top" alt="" width=50 height=50 />
+                                    <div class="drinkPrice">`+ response[index].order_id +`</div>
+                                    <p class="fw-bold">`+ response[index].price +`</p>
+           
+                                           
+                                </div>
+                                
+                              </div>  
+                          </div>`;
+
+            });
+
+            //console.log(Test_HTML);
+            div.innerHTML = Test_HTML;
+            document.querySelector('#products').appendChild(div);
+   
+                
+            }
+        });
+           
+
+           
+         })
+  });
        
 
-       order.forEach(element => {
-   
-       element.addEventListener('click',()=>{})
-        //  let btnClick = document.getElementById("orderTable");
-        //  let hidden = element.getAttribute("hidden");
 
-        // if (hidden) {
-        //   element.removeAttribute("hidden");
-        //   btnClick.innerText = "Hide table";
-        // } else {
-        //   element.setAttribute("hidden", "hidden");
-        //   btnClick.innerText = "Show table";
-        // }
 
-        document.getElementById('orderTable').style.visibility = "visible";
- 
-   });
-    
-  
-  <script> --}}
-
+</script>
  
 
 </div>

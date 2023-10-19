@@ -40,61 +40,33 @@ class checkController extends Controller
 
     public function showOrders($user_id,Request $request)
     {
-        //dd($user_id);
-       // $user = User::find($user_id); 
-      
-        // foreach($user as $users){
-        //     $userId=$users->id;
-        // }
-        
-      
-
-        
-       
-       // $productNames = $order->products()->pluck('name');
-       
 
            $order = Order::where('user_id', $user_id)->get();
-       
-       
-       //dd($user_id);
-      
-       
-       // return view("orders.index",["products",$productNames]);
-     
-       //return view('orders.index',["productDetails"=>$productDetails,"orders"=>$order]);
-
-
-       //dd($productDetails);
-       
-       return $order;
-       
- 
+   
+           return $order;
+  
     }
 
 
-    // public function showOrderProduct($user_id)
-    // {
+    public function showProducts($order_id)
+    {
 
-    //     $user = User::find($user_id); 
-      
-        
-    //    // $productNames = $order->products()->pluck('name');
-    //    $order = Order::where('user_id', $user)->get();
-       
        
       
-       
-    //    // return view("orders.index",["products",$productNames]);
-     
-    //    //return view('orders.index',["productDetails"=>$productDetails,"orders"=>$order]);
-
-
-    //    //dd($productDetails);
-    //    return $order;
+        // $productNames = $order->products()->pluck('name');
+         
+         
+         $productDetails = DB::table('products')
+                         ->join('product_order', 'products.id', '=', 'product_order.product_id')
+                         ->join('orders', 'product_order.order_id', '=', 'orders.id')
+                         ->where('orders.id', $order_id)->get();
+                        
+             
+         //dd($productDetails);
+        return $productDetails;
        
  
-    // }
+    }
 
 
    
