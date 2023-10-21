@@ -141,8 +141,9 @@ class productsController extends Controller
 
     function index()
     {
-
-        return view("userView.index");
+        $products = Product::all();
+        // $users = User::all();
+        return view("userView.index", ["products" => $products]);
     }
     function orders()
     {
@@ -155,6 +156,7 @@ class productsController extends Controller
         $users = User::all();
         return view("adminView.index", ["products" => $products, "users" => $users]);
     }
+
 
 
     function adminUser()

@@ -16,30 +16,38 @@ class UserOrderController extends Controller
         // dd(\request()->all());
 
         $user = Auth::id();
-
+        // dd($user);
         $user_obj = User::find($user);
         // dd($user_obj);
-        if ($user_obj->role == "admin") {
-            $userID = \request()->get("userID");
-        } else {
-            $userID = $user;
-        }
+
 
         $comment = \request()->get("comment");
         $product_id = \request()->get("productID");
         $quantity = \request()->get("quantity");
 
+        if ($user_obj->role == "admin") {
+            $userID = \request()->get("userID");
+            \request()->validate([
+                'quantity' => 'required|array|min:1',
+                'userID' => 'required|not_regex:/^[a-zA-Z\s]*$/',
+            ], [
+                "quantity.required" => "no items",
+                "userID.required" => "no user selected",
+                "userID.not_regex" => "no users selected",
+            ]);
+        } else {
+            $userID = $user;
+            \request()->validate([
+                'quantity' => 'required|array|min:1',
 
+            ], [
+                "quantity.required" => "no items",
+
+            ]);
+        }
         // dd($products);
 
-        \request()->validate([
-            'quantity' => 'required|array|min:1',
-            'userID' => 'required|not_regex:/^[a-zA-Z\s]*$/',
-        ], [
-            "quantity.required" => "no items",
-            "userID.required" => "no user selected",
-            "userID.not_regex" => "no user selected",
-        ]);
+
         $orderTotalPrice = 0;
         for ($i = 0; $i < count($product_id); $i++) {
             $products = Product::findorfail($product_id[$i]);
