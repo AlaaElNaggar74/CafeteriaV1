@@ -43,10 +43,6 @@ class orderController extends Controller
 
 
 
-        // return view("orders.index",["products",$productNames]);
-
-        //return view('orders.index',["productDetails"=>$productDetails,"orders"=>$order]);
-
         return $productDetails;
     }
 
@@ -64,25 +60,7 @@ class orderController extends Controller
     public function store(Request $request)
     {
 
-        // $productDetails = DB::table('products')
-        // ->join('product_order', 'products.id', '=', 'product_order.product_id')
-        // ->join('orders', 'product_order.order_id', '=', 'orders.id')
-        // ->where('orders.user_id',Auth::id())->get();
-
-        // dd($productDetails);
-
-
-        // foreach($productDetails as $productprice){
-        //     foreach($products as $product){
-        //         if($productprice->product_id==$product->id)
-        //             $productprice->totalPrice+=$productprice->quantity * $productprice->price;
-
-        //        else{
-        //         $productprice->totalPrice=$product->price;
-        //        }
-        //     }
-
-        // }
+       
 
     }
 
@@ -91,13 +69,7 @@ class orderController extends Controller
      */
     public function show(Order $order)
     {
-        $products = DB::table('products')
-            ->join('product_order', 'products.id', '=', 'product_order.product_id')
-            ->join('orders', 'orders.id', '=', 'product_order.order_id')
-            ->where('orders.user_id', Auth::id())
-            ->get();
-
-        return view('orders.index', ['order' => $order, "products" => $products]);
+    
     }
 
     /**

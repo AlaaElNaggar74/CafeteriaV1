@@ -14,7 +14,7 @@
       <input type="date" name="start_date" id="" placeholder="Date From" class="me-4">
       <span>Date To</span>
       <input type="date" name="end_date" id=""><br>
-      <select class="form-select w-50 mt-5" name="user_id" aria-label="Default select example">
+      <select class="form-select w-50 mt-5" name="user_id" aria-label="Default select example" data-select="filter">
         <option selected>User</option>
         @forEach($users as $user)
         @if($user->role != 'admin')
@@ -22,7 +22,7 @@
         @endif
         @endforeach
       </select>
-      <button type="submit" class="btn btn-primary mt-4 px-4">filter</button>
+      <button type="submit" class="btn btn-primary mt-4 px-4" data-button="filter">filter</button>
     </form>
   </div>
 
@@ -33,7 +33,7 @@
         <th>totalAmount</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody >
       @foreach($users as $user)
       <tr>
         @if($user->role!="admin")
@@ -48,7 +48,7 @@
 
       @endforeach
 
-      {{-- <td>{{$order->totalPrice}}</td> --}}
+     
 
 
 
@@ -100,13 +100,15 @@
 
     let order = document.querySelectorAll('.order');
 
+    const div = document.createElement("div");
+
 
 
     order.forEach(element => {
 
       element.addEventListener('click', () => {
 
-        // console.log(element.id);
+        
         var Test_HTML = "";
         let user_id = element.id;
         $.ajax({
@@ -132,7 +134,7 @@
               Test_HTML += `
                                  <tr>
                                   <td>
-                                   <button class="btn btn-danger product" id="${response[index].id}">+</button>
+                                   <button class="btn btn-danger product" data-id="${response[index].id}" data-button="item">+</button>
                                     ${response[index].created_at}</td>  
                                   <td>${response[index].totalPrice}</td> 
                                 </tr>
@@ -140,7 +142,7 @@
 
             });
 
-            `
+                  `
                     </tbody>  
                     </table>`
 
@@ -156,74 +158,88 @@
 
       })
     });
-  </script>
+
+  
+
+   
 
 
 
-  <script>
-    const div = document.createElement("div");
+$(document).on("click", "[data-button=item]", function (e) {
+      let order_id = $(this).data("id");
+   
 
-    let product = document.querySelectorAll('.product');
+      let Test_HTML="";
+      $.ajax({
+              url: "/showProducts/" + order_id,
+                type: "get",
+                dataType: "json",
+              success: function (response) {
+                //console.log(response)
 
+       
 
+      $.each(response, function(index) {
+        console.log(response);
 
+        Test_HTML += `<div class="orderItems mt-5">
+                        <div class="checkDrink text-center ">
+                          <div>
+                              <img src="/images/` + response[index].image + `" class="img-fluid rounded-top" alt="" width=50 height=50 />
+                              <div class="drinkPrice">` + response[index].order_id + `</div>
+                              <p class="fw-bold">` + response[index].price + `</p>
+                              <p class="fw-bold">` + response[index].name + `</p>
 
+                                    
+                          </div>
+                          
+                        </div>  
+                    </div>`;
 
+      });
 
-    product.forEach(element => {
-
-      element.addEventListener('click', () => {
-
-        // console.log(element.id);
-        var Test_HTML = "";
-        let order_id = element.id;
-        $.ajax({
-          url: "/showProducts/" + order_id,
-          type: "get",
-          dataType: "json",
-          success: function(response) {
-            console.log(response)
-
-            Test_HTML = `<table class="table text-center ">
-                         <thead>
-                             <tr>
-                               <th>orderDate</th>
-                               <th>totalAmount</th>      
-                             </tr>
-                         </thead>
-                         `
-
-
-            $.each(response, function(index) {
-              console.log(response);
-
-              Test_HTML += `<div class="orderItems mt-5">
-                              <div class="checkDrink text-center d-flex justify-content-center align-items-center">
-                                <div>
-                                    <img src="/images/` + response[index].image + `" class="img-fluid rounded-top" alt="" width=50 height=50 />
-                                    <div class="drinkPrice">` + response[index].order_id + `</div>
-                                    <p class="fw-bold">` + response[index].price + `</p>
-           
-                                           
-                                </div>
-                                
-                              </div>  
-                          </div>`;
-
-            });
-
-            //console.log(Test_HTML);
-            div.innerHTML = Test_HTML;
-            document.querySelector('#products').appendChild(div);
-
-
-          }
-        });
+  
+      div.innerHTML = Test_HTML;
+      document.querySelector('#products').appendChild(div);
 
 
 
-      })
+              }
+            })
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // let users = @json($users);
+
+    // $(document).on("click", "[data-button=filter]", function (e) {
+    //   e.preventDefault();
+      
+
+    //   let user_id = $("[data-select=filter]").val();
+
+    //   let filtered = users.filter(v => v.id == user_id);
+
+    //   // update table to have only filtered user(s)
+  
+   
+    // });
+
+    //clear filter
+
   </script>
 
 
