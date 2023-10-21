@@ -1,5 +1,5 @@
 let product =document.querySelector(".selected");
-console.log(products);
+// console.log(products);
 let ifExist=[];
 let finalPrice=0;
 // initial quantity to 0
@@ -32,7 +32,7 @@ for(let i=0;i<products.length;i++){
         <input id="totall${products[i].id}" type="text" name="quantity[]" value="${products[i].quantity}" readonly hidden>
         </tr>`
  
-      finalPrice+=products[i].totalPrice;
+      finalPrice+=products[i].price;
       document.getElementById("finalPrice").textContent=finalPrice;
     }
 }
@@ -46,7 +46,10 @@ function deleteProduct(e,id){
     let row=e.parentElement.parentElement;
     let arrIndex=parseInt(row.id.slice(3));
     products[products.findIndex(obj => obj.id === arrIndex)].quantity=1;
+    finalPrice-=products[products.findIndex(obj => obj.id === arrIndex)].totalPrice;
+    document.getElementById("finalPrice").textContent=finalPrice;
     products[products.findIndex(obj => obj.id === arrIndex)].totalPrice=products[products.findIndex(obj => obj.id === arrIndex)].price;
+   
     // console.log(products[products.findIndex(obj => obj.id === arrIndex)].quantity);
     // console.log("🚀 ~ file: index.js:8 ~ products:", products);
     // console.log(ifExist.indexOf(arrIndex));
@@ -86,7 +89,7 @@ function Add(e){
       products[i].totalPrice=price;
       // console.log("arrIndex");
       // console.log("🚀 ~ file: index.js:8 ~ products:", products)
-      finalPrice=products[i].totalPrice;
+      finalPrice+=products[i].price;
       updateDisplay(products[i].id,products[i].quantity,products[i].totalPrice)
     
     }
@@ -100,8 +103,8 @@ document.getElementById("finalPrice").textContent=finalPrice;
 function Min(e){
   let arrIndex=parseInt(e.id.slice(3));
   for(let i=0;i<products.length;i++){
-    console.log(products[i].id);
-    console.log(arrIndex);
+    // console.log(products[i].id);
+    // console.log(arrIndex);
     if(products[i].id==arrIndex&&products[i].quantity>1){
       
       products[i].quantity--;
@@ -110,11 +113,12 @@ function Min(e){
       price *= products[i].quantity;
       products[i].totalPrice=price;
       // console.log("arrIndex");
-      console.log("🚀 ~ file: index.js:8 ~ products:", products)
+      // console.log("🚀 ~ file: index.js:8 ~ products:", products)
+      finalPrice-=products[i].price;
       updateDisplay(products[i].id,products[i].quantity,products[i].totalPrice)
     }
 }
-
+document.getElementById("finalPrice").textContent=finalPrice;
 }
 
 
