@@ -16,11 +16,21 @@
       <input type="date" name="end_date" id=""><br>
       <select class="form-select w-50 mt-5" name="user_id" aria-label="Default select example" data-select="filter">
         <option selected>User</option>
+        @if($filter=="false")
         @forEach($users as $user)
         @if($user->role != 'admin')
         <option value="{{$user->id}}">{{$user->name}}</option>
         @endif
         @endforeach
+        @endif
+
+        @if($filter=="true")
+
+        @if($users->role != 'admin')
+        <option value="{{$users->id}}">{{$users->name}}</option>
+        @endif
+
+        @endif
       </select>
       <button type="submit" class="btn btn-primary mt-4 px-4" data-button="filter">filter</button>
     </form>
@@ -33,7 +43,8 @@
         <th>totalAmount</th>
       </tr>
     </thead>
-    <tbody >
+    <tbody>
+      @if($filter=="false")
       @foreach($users as $user)
       <tr>
         @if($user->role!="admin")
@@ -48,8 +59,23 @@
 
       @endforeach
 
-     
+      @endif
+      @if($filter=="true")
 
+      <tr>
+        @if($users->role!="admin")
+        <td>
+          <button class="btn btn-danger order" id="{{$users->id}}">+</button>
+          {{$users->name}}
+        </td>
+        @endif
+      </tr>
+
+
+
+
+
+      @endif
 
 
 
@@ -108,7 +134,7 @@
 
       element.addEventListener('click', () => {
 
-        
+
         var Test_HTML = "";
         let user_id = element.id;
         $.ajax({
@@ -142,7 +168,7 @@
 
             });
 
-                  `
+            `
                     </tbody>  
                     </table>`
 
@@ -159,30 +185,30 @@
       })
     });
 
-  
-
-   
 
 
 
-$(document).on("click", "[data-button=item]", function (e) {
+
+
+
+    $(document).on("click", "[data-button=item]", function(e) {
       let order_id = $(this).data("id");
-   
 
-      let Test_HTML="";
+
+      let Test_HTML = "";
       $.ajax({
-              url: "/showProducts/" + order_id,
-                type: "get",
-                dataType: "json",
-              success: function (response) {
-                //console.log(response)
+        url: "/showProducts/" + order_id,
+        type: "get",
+        dataType: "json",
+        success: function(response) {
+          //console.log(response)
 
-       
 
-      $.each(response, function(index) {
-        console.log(response);
 
-        Test_HTML += `<div class="orderItems mt-5">
+          $.each(response, function(index) {
+            console.log(response);
+
+            Test_HTML += `<div class="orderItems mt-5">
                         <div class="checkDrink text-center ">
                           <div>
                               <img src="/images/` + response[index].image + `" class="img-fluid rounded-top" alt="" width=50 height=50 />
@@ -196,16 +222,16 @@ $(document).on("click", "[data-button=item]", function (e) {
                         </div>  
                     </div>`;
 
-      });
-
-  
-      div.innerHTML = Test_HTML;
-      document.querySelector('#products').appendChild(div);
+          });
 
 
+          div.innerHTML = Test_HTML;
+          document.querySelector('#products').appendChild(div);
 
-              }
-            })
+
+
+        }
+      })
     });
 
 
@@ -227,19 +253,18 @@ $(document).on("click", "[data-button=item]", function (e) {
 
     // $(document).on("click", "[data-button=filter]", function (e) {
     //   e.preventDefault();
-      
+
 
     //   let user_id = $("[data-select=filter]").val();
 
     //   let filtered = users.filter(v => v.id == user_id);
 
     //   // update table to have only filtered user(s)
-  
-   
+
+
     // });
 
     //clear filter
-
   </script>
 
 
