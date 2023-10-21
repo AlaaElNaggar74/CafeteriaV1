@@ -50,17 +50,18 @@
             aria-label="Default select example"
             name="category_id"
           >
-            <option selected value="0">Category</option>
+          
+            <option selected value="1">Select Category</option>
 
             @foreach ($categories as $category)
+            @if($category->id != 1)
                         <option value="{{$category->id}}">{{$category->name}}</option>
+            @endif
             @endforeach
-            {{-- <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option> --}}
+   
           </select>
         </div>
-
+        @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
         {{--
         <div class="mb-1">
           <label for="email" class="form-label">Email address</label>

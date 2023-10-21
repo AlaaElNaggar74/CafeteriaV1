@@ -114,6 +114,22 @@ class productsController extends Controller
     function updateProduct()
     {
 
+
+
+        \request()->validate([
+   
+            'image' => 'required',
+          
+        ], [
+       
+
+            "image.required" => "The Image Source Is Required",
+           
+
+
+        ]);
+
+
         $request = \request();
         $request_data = \request()->all();
         if ($request->hasFile("image")) {
@@ -127,10 +143,12 @@ class productsController extends Controller
 
         $name = \request()->get("name");
         $price = \request()->get("price");
+        $category_id = \request()->get("category_id");
         // $category = \request()->get("category");
 
         $productID->name = $name;
         $productID->price = $price;
+        $productID->category_id = $category_id;
         // $productID->category = $category;
         $productID->image = $image;
         $productID->save();
@@ -141,8 +159,9 @@ class productsController extends Controller
 
     function index()
     {
-
-        return view("userView.index");
+        $products = Product::all();
+        // $users = User::all();
+        return view("userView.index", ["products" => $products]);
     }
     function orders()
     {
@@ -155,6 +174,7 @@ class productsController extends Controller
         $users = User::all();
         return view("adminView.index", ["products" => $products, "users" => $users]);
     }
+
 
 
     function adminUser()

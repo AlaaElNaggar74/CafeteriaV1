@@ -5,6 +5,7 @@ use App\Http\Controllers\productsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\socialiteContr;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserOrderController;
@@ -53,7 +54,7 @@ Route::get("/adminManualOrder", [orderController::class, "adminManualOrder"])->n
 Route::post('/adminManualOrder/{id}/confirm_order', [orderController::class, 'confirm'])->name('confirm');
 
 // Route::get("/adminUser", [productsController::class, "adminUser"])->name("adminUser");
-//Route::get("/adminChecks", [productsController::class, "adminChecks"])->name("adminChecks");
+Route::get("/adminChecks", [productsController::class, "adminChecks"])->name("adminChecks");
 Route::get("/adminAddUser", [productsController::class, "addUser"])->name("addUser");
 Route::get("/adminUserView/{id}", [productsController::class, "view"])->name("view");
 Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name("edit");
@@ -75,6 +76,16 @@ Route::get('/showProducts/{id}', [checkController::class, 'showProducts']);
 Route::get('/checks', [checkController::class, 'index'])->name("checks");
 Route::get("/userOrders", [orderController::class, "index"])->name("order.index");
 Route::get("/myorder", [orderController::class, "index"])->name("order.index");
+
+
+Route::get("/userOrders", [orderController::class, "index"])->name("order.index");
+
+
+//Strip
+
+Route::get("/checkOut", [StripeController::class, "checkOut"])->name("checkOut");
+Route::post('/session', 'App\Http\Controllers\StripeController@session')->name('session');
+Route::get('/success/{id}', 'App\Http\Controllers\StripeController@success')->name('success');
 
 Auth::routes();
 

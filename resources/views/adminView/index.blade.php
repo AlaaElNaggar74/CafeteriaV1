@@ -1,6 +1,11 @@
 @extends('layouts.app') @section('content')
 @error('quantity') <p class="text-danger">{{$message}}</p> @enderror
-
+@error('userID') <p class="text-danger">{{$message}}</p> @enderror
+@if (session()->has('success'))
+<div class="alert alert-success">
+  {{ session('success') }}
+</div>
+@endif
 <form method="Post" action="{{route('Order.store')}}" class="adminHomePage">
   @csrf
   <div class="container-fluid">
@@ -60,7 +65,9 @@
             <select class="form-select" name="userID" aria-label="Default select example">
               <option selected>select User</option>
               @foreach ($users as $user)
+              @if( $user->role=="user")
               <option value="{{$user->id}}">{{$user->name}}</option>
+              @endif
               @endforeach
             </select>
           </div>
