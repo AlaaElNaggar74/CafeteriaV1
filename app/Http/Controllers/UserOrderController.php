@@ -65,7 +65,37 @@ class UserOrderController extends Controller
         }
         // $order->product()->attach([3 => ['quantity' => 1], 4 => ['quantity' => 2], 5 => ['quantity' => 3]]);
         // dd($order);
-        session()->flash('success', 'Order added successfully.');
-        return redirect()->back();
+        if ($user_obj->role == "admin") {
+            session()->flash('success', 'Order added successfully.');
+            return redirect()->back();
+        } elseif ($user_obj->role == "user") {
+            \Stripe\Stripe::setApiKey(config('stripe.sk'));
+
+            $productname = "Order";
+            $totalprice = $orderTotalPrice;
+
+            $two0 = "00";
+            $total = "$totalprice$two0";
+
+            $session = \Stripe\Checkout\Session::create([
+                'line_items'  => [
+                    [
+                        'price_data' => [
+                            'currency'     => 'USD',
+                            'product_data' => [
+                                "name" => $productname,
+                            ],
+                            'unit_amount'  => $total,
+                        ],
+                        'quantity'   => 1,
+                    ],
+
+                ],
+                'mode'        => 'payment',
+                'success_url' => route('success', $order->id),
+                'cancel_url'  => route('checkOut'),
+            ]);
+            return redirect()->away($session->url);
+        }
     }
 }

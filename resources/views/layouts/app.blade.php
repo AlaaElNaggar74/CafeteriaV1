@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="{{asset('style/categoryShow.css')}}">
     <link rel="stylesheet" href="{{asset('style/adminViewPro.css')}}">
     <link rel="stylesheet" href="{{asset('style/checks.css')}}">
+    <link rel="stylesheet" href="{{asset('style/checkOut.css')}}">
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -57,14 +59,18 @@
                     @if ( Auth::user()->role != "admin")
                     <ul class="navbar-nav ">
                         <li>
-                            <a href="{{route('indexUser')}}" class="linkk text-decoration-none text-black fs-5"> Home</a>
-
-                            {{-- <a href="" class="px-2 text-decoration-none text-black fs-4"> Home</a> --}}
+                            <a href="{{route('indexUser')}}" class="linkk text-decoration-none text-black fs-5">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{route('userOrder')}}" class="linkk text-decoration-none text-black fs-5">MyOrder</a>
                         </li>
                         <li>
                             <a href="{{route('orders.index')}}" class="linkk text-decoration-none text-black fs-5"> MyOrder</a>
 
                             {{-- <a href="" class="px-2 text-decoration-none text-black fs-4">MyOrder</a> --}}
+                        </li>
+                        <li>
+                            <a href="{{route('checkOut')}}" class="linkk text-decoration-none text-black fs-5">checkOut</a>
                         </li>
                     </ul>
 
@@ -83,7 +89,10 @@
                             <a href="{{route('adminManualOrder')}}" class="linkk px-2 text-decoration-none text-black fs-5">Manual Order</a>
                         </li>
                         <li>
-                            <a href="{{route('checks')}}" class="linkk px-2 text-decoration-none text-black fs-5">Checks</a>
+                            <a href="{{route('adminChecks')}}" class="linkk px-2 text-decoration-none text-black fs-5">Checks</a>
+                        </li>
+                        <li>
+                            <a href="{{route('checkOut')}}" class="linkk text-decoration-none text-black fs-5">checkOut</a>
                         </li>
                     </ul>
 
