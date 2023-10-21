@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Product;
 
 class UserOrderController extends Controller
 {
@@ -11,26 +15,21 @@ class UserOrderController extends Controller
     {
         // dd(\request()->all());
 
+        $user = Auth::id();
+        $users = new User();
 
-
-
+        $user_obj = User::find($user);
 
 
         $comment = \request()->get("comment");
-        // $price = \request()->get("price");
         $quantity = \request()->get("quantity");
         $userID = \request()->get("userID");
-        // $category = \request()->get("category");
         $order = new Order();
 
         $order->comment = $comment;
-        // $order->price = $price;
         $order->totalPrice = intval($quantity);
         $order->user_id = $userID;
-        // // $product->category = $category;
 
         $order->save();
-
-        // return to_route("adminProducts");
     }
 }

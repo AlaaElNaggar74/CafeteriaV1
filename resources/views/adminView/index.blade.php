@@ -1,4 +1,6 @@
 @extends('layouts.app') @section('content')
+@error('quantity') <p class="text-danger">{{$message}}</p> @enderror
+
 <form method="Post" action="{{route('Order.store')}}" class="adminHomePage">
   @csrf
   <div class="container-fluid">
@@ -57,11 +59,9 @@
           <div class="mb-3 d-flex align-items-center col-md-3 m-auto">
             <select class="form-select" name="userID" aria-label="Default select example">
               <option selected>select User</option>
-              <option value="1">Aya</option>
-              <option value="2">Noor</option>
-              <option value="3">Norhan</option>
-              <option value="4">Mostafa</option>
-              <option value="5">Alaa</option>
+              @foreach ($users as $user)
+              <option value="{{$user->id}}">{{$user->name}}</option>
+              @endforeach
             </select>
           </div>
 
