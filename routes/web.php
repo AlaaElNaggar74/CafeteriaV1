@@ -37,7 +37,7 @@ Route::get('/', function () {
 
 Route::get("/userHome", [productsController::class, "index"])->name("indexUser");
 //which to use
-Route::get("/myOrderUser", [productsController::class, "orders"])->name("userOrder");
+// Route::get("/myOrderUser", [productsController::class, "orders"])->name("userOrder");
 Route::get("/myorder", [orderController::class, "index"])->name("order.index");
 Route::get("/adminHome", [productsController::class, "adminIndex"])->name("adminIndex");
 Route::get("/adminProducts", [productsController::class, "adminProducts"])->name("adminProducts");
@@ -54,10 +54,10 @@ Route::get("/adminManualOrder", [orderController::class, "adminManualOrder"])->n
 Route::post('/adminManualOrder/{id}/confirm_order', [orderController::class, 'confirm'])->name('confirm');
 
 // Route::get("/adminUser", [productsController::class, "adminUser"])->name("adminUser");
-Route::get("/adminChecks", [productsController::class, "adminChecks"])->name("adminChecks");
-Route::get("/adminAddUser", [productsController::class, "addUser"])->name("addUser");
-Route::get("/adminUserView/{id}", [productsController::class, "view"])->name("view");
-Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name("edit");
+// Route::get("/adminChecks", [productsController::class, "adminChecks"])->name("adminChecks");
+// Route::get("/adminAddUser", [productsController::class, "addUser"])->name("addUser");
+// Route::get("/adminUserView/{id}", [productsController::class, "view"])->name("view");
+// Route::get("/adminUserEdit/{id}", [productsController::class, "editUser"])->name("edit");
 Route::resource('Users', UserController::class);
 // Route::get("userHome",[productsController::class,"index"])->name("index");
 // Route::get("myOrderUser",[productsController::class,"orders"])->name("userOrder");
@@ -72,13 +72,13 @@ Route::get('/filter', [orderController::class, 'searchByDate']);
 Route::get('/filterAdmin', [checkController::class, 'searchByDate']);
 Route::get('/test/{id}', [orderController::class, 'Test']);
 Route::get('/showOrders', [checkController::class, 'showOrders']);
-Route::get('/showProducts/{id}', [checkController::class, 'showProducts']);
+// Route::get('/showProducts/{id}', [checkController::class, 'showProducts']);
 Route::get('/checks', [checkController::class, 'index'])->name("checks");
 Route::get("/userOrders", [orderController::class, "index"])->name("order.index");
 Route::get("/myorder", [orderController::class, "index"])->name("order.index");
 
 
-Route::get("/userOrders", [orderController::class, "index"])->name("order.index");
+// Route::get("/userOrders", [orderController::class, "index"])->name("order.index");
 
 
 //Strip

@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\User;
 use App\Models\Product;
 use Carbon\Carbon;
+use Illuminate\Support\Carbon as SupportCarbon;
 
 class orderController extends Controller
 {
@@ -59,9 +60,6 @@ class orderController extends Controller
      */
     public function store(Request $request)
     {
-
-       
-
     }
 
     /**
@@ -69,7 +67,6 @@ class orderController extends Controller
      */
     public function show(Order $order)
     {
-    
     }
 
     /**
@@ -116,12 +113,20 @@ class orderController extends Controller
     {
 
         //$user = Auth()->user();
+        // $mytime = date("Y-m-d");
 
+        // $orders = Order::join('users', 'users.id', 'orders.user_id')
+        //     ->select('users.name as username', 'orders.*')
+        //     ->whereDate('orders.created_at', Carbon::parse($mytime)->format('Y-m-d'))
+        //     ->where('orders.paied', 'true')
+        //     ->paginate(5);
+        $mytime = date("Y-m-d");
 
         $orders = Order::join('users', 'users.id', 'orders.user_id')
             ->select('users.name as username', 'orders.*')
-            // ->where('user_id',$user->id)
-            // ->get()->keyBy('id');
+            ->where('orders.created_at', '>=', Carbon::parse($mytime)->startOfDay())
+            ->where('orders.created_at', '<=', Carbon::parse($mytime)->endOfDay())
+            ->where('orders.paied', true)
             ->paginate(5);
 
         foreach ($orders as $order) {
