@@ -86,13 +86,13 @@
                             <a href="{{route('Users.index')}}" class="linkk px-2 text-decoration-none text-black fs-5">Users</a>
                         </li>
                         <li>
-                            <a href="{{route('adminManualOrder')}}" class="linkk px-2 text-decoration-none text-black fs-5">Manual Order</a>
+                            <a href="{{route('adminManualOrder')}}" class="linkk px-2 text-decoration-none text-black fs-5">Orders Status</a>
                         </li>
                         <li>
-                            <a href="{{route('adminChecks')}}" class="linkk px-2 text-decoration-none text-black fs-5">Checks</a>
+                            <a href="{{route('categories.index')}}" class="linkk px-2 text-decoration-none text-black fs-5">Categories</a>
                         </li>
                         <li>
-                            <a href="{{route('checkOut')}}" class="linkk text-decoration-none text-black fs-5">checkOut</a>
+                            <a href="{{route('checks')}}" class="linkk text-decoration-none text-black fs-5">Order History</a>
                         </li>
                     </ul>
 

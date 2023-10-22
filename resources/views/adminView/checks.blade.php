@@ -11,9 +11,9 @@
     <form method="get" action="/filterAdmin">
       @csrf
       <span>Date From</span>
-      <input type="date" name="start_date" id="" placeholder="Date From" class="me-4">
+      <input type="date" name="start_date" id="SD" placeholder="Date From" class="me-4">
       <span>Date To</span>
-      <input type="date" name="end_date" id=""><br>
+      <input type="date" name="end_date" id="ED"><br>
       <select class="form-select w-50 mt-5" name="user_id" aria-label="Default select example" data-select="filter">
         <option selected>User</option>
         @if($filter=="false")
@@ -32,7 +32,7 @@
 
         @endif
       </select>
-      <button type="submit" class="btn btn-primary mt-4 px-4" data-button="filter">filter</button>
+      <button type="submit" class="btn btn-primary mt-4 px-4" data-button="filter">filter users</button>
     </form>
   </div>
 
@@ -134,12 +134,20 @@
 
       element.addEventListener('click', () => {
 
+        let start_date = document.getElementById('SD').value;
+        let end_date = document.getElementById('ED').value;
+        console.log(start_date, end_date);
 
         var Test_HTML = "";
         let user_id = element.id;
         $.ajax({
-          url: "/showOrders/" + user_id,
+          url: "showOrders",
           type: "get",
+          data: {
+            user_id: user_id,
+            start_date: start_date,
+            end_date: end_date
+          },
           dataType: "json",
           success: function(response) {
             //console.log(response)
@@ -193,7 +201,6 @@
 
     $(document).on("click", "[data-button=item]", function(e) {
       let order_id = $(this).data("id");
-
 
       let Test_HTML = "";
       $.ajax({
