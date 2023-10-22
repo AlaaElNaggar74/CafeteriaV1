@@ -8,13 +8,20 @@
     overflow-x: auto;
 }
 
-.adminHomePage th {
+
+
+.adminHomePage td  ,.adminHomePage th{
     border-bottom: 0;
+    height: 50px;
+    padding: 10px;
+    vertical-align: center;
+
+
 }
 
-.adminHomePage td {
-    border-bottom: 0;
-}
+
+
+
 
 .adminHomePage .lin {
     width: 80%;
@@ -108,3 +115,4 @@
     background: #490c0c;
     height: 2px;
 }
+
