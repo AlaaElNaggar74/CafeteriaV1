@@ -33,15 +33,21 @@
         <th>totalAmount</th>
       </tr>
     </thead>
-    <tbody >
+    <tbody>
       @foreach($users as $user)
+      @if($user->role!="admin")
       <tr>
-        @if($user->role!="admin")
+        
         <td>
           <button class="btn btn-danger order" id="{{$user->id}}">+</button>
           {{$user->name}}
         </td>
-        @endif
+        
+        <td>
+          @endif
+
+          {{$user->totalPrice}}
+        </td>
       </tr>
 
 
@@ -57,7 +63,7 @@
 
   </table>
 
-
+{{-- 
   <table class="table text-center" id="orderTable" hidden>
     <thead>
       <tr>
@@ -75,7 +81,7 @@
 
       @endforeach
     </tbody>
-  </table>
+  </table> --}}
 
 
 
