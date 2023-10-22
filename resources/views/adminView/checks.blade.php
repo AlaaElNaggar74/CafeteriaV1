@@ -11,28 +11,18 @@
     <form method="get" action="/filterAdmin">
       @csrf
       <span>Date From</span>
-      <input type="date" name="start_date" id="SD" placeholder="Date From" class="me-4">
+      <input type="date" name="start_date" id="" placeholder="Date From" class="me-4">
       <span>Date To</span>
-      <input type="date" name="end_date" id="ED"><br>
+      <input type="date" name="end_date" id=""><br>
       <select class="form-select w-50 mt-5" name="user_id" aria-label="Default select example" data-select="filter">
         <option selected>User</option>
-        @if($filter=="false")
         @forEach($users as $user)
         @if($user->role != 'admin')
         <option value="{{$user->id}}">{{$user->name}}</option>
         @endif
         @endforeach
-        @endif
-
-        @if($filter=="true")
-
-        @if($users->role != 'admin')
-        <option value="{{$users->id}}">{{$users->name}}</option>
-        @endif
-
-        @endif
       </select>
-      <button type="submit" class="btn btn-primary mt-4 px-4" data-button="filter">filter users</button>
+      <button type="submit" class="btn btn-primary mt-4 px-4" data-button="filter">filter</button>
     </form>
   </div>
 
@@ -44,38 +34,28 @@
       </tr>
     </thead>
     <tbody>
-      @if($filter=="false")
       @foreach($users as $user)
+      @if($user->role!="admin")
       <tr>
-        @if($user->role!="admin")
+
         <td>
           <button class="btn btn-danger order" id="{{$user->id}}">+</button>
           {{$user->name}}
         </td>
-        @endif
+
+        <td>
+          @endif
+
+          {{$user->totalPrice}}
+        </td>
       </tr>
 
 
 
       @endforeach
 
-      @endif
-      @if($filter=="true")
-
-      <tr>
-        @if($users->role!="admin")
-        <td>
-          <button class="btn btn-danger order" id="{{$users->id}}">+</button>
-          {{$users->name}}
-        </td>
-        @endif
-      </tr>
 
 
-
-
-
-      @endif
 
 
 
@@ -83,7 +63,7 @@
 
   </table>
 
-
+  {{--
   <table class="table text-center" id="orderTable" hidden>
     <thead>
       <tr>
@@ -96,12 +76,12 @@
 
       <tr>
         <td>{{$order->created_at}}</td>
-        <td>{{$order->totalPrice}}</td>
-      </tr>
+  <td>{{$order->totalPrice}}</td>
+  </tr>
 
-      @endforeach
-    </tbody>
-  </table>
+  @endforeach
+  </tbody>
+  </table> --}}
 
 
 
@@ -134,20 +114,12 @@
 
       element.addEventListener('click', () => {
 
-        let start_date = document.getElementById('SD').value;
-        let end_date = document.getElementById('ED').value;
-        console.log(start_date, end_date);
 
         var Test_HTML = "";
         let user_id = element.id;
         $.ajax({
-          url: "showOrders",
+          url: "/showOrders/" + user_id,
           type: "get",
-          data: {
-            user_id: user_id,
-            start_date: start_date,
-            end_date: end_date
-          },
           dataType: "json",
           success: function(response) {
             //console.log(response)
@@ -201,6 +173,7 @@
 
     $(document).on("click", "[data-button=item]", function(e) {
       let order_id = $(this).data("id");
+
 
       let Test_HTML = "";
       $.ajax({

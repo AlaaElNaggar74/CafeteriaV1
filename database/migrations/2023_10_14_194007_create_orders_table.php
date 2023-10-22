@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->double('totalPrice', 8, 2);
             $table->enum('status', ['Processing', 'Out for Delivery', 'Done'])->default('Processing');
-            $table->string("comment");
             $table->foreignId("user_id")->nullable()->constrained("users")->onUpdate("cascade")->onDelete("cascade");
             $table->timestamps();
         });

@@ -72,7 +72,7 @@ Route::get('/filter', [orderController::class, 'searchByDate']);
 Route::get('/filterAdmin', [checkController::class, 'searchByDate']);
 Route::get('/test/{id}', [orderController::class, 'Test']);
 Route::get('/showOrders', [checkController::class, 'showOrders']);
-// Route::get('/showProducts/{id}', [checkController::class, 'showProducts']);
+Route::get('/showProducts/{id}', [checkController::class, 'showProducts']);
 Route::get('/checks', [checkController::class, 'index'])->name("checks");
 Route::get("/userOrders", [orderController::class, "index"])->name("order.index");
 Route::get("/myorder", [orderController::class, "index"])->name("order.index");

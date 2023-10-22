@@ -12,7 +12,7 @@
         <h1>Address: {{$user->address}}</h1>
       </div>
       <div class="col-md-6">
-
+        <img src="{{asset('images/user1.png')}}" alt="">
       </div>
     </div>
   </div>
