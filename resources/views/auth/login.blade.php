@@ -85,6 +85,9 @@
                                     <a href="/auth/google" class="btn btn-primary my-1">
                                         Google
                                     </a>
+                                    <a href="/userHome" class="btn btn-primary my-1">
+                                        visit as guest
+                                    </a>
 
 
                                 </div>

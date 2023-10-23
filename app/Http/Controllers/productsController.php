@@ -10,6 +10,10 @@ use App\Models\User;
 
 class productsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+    }
     //
 
     // Index Function***********************
@@ -117,14 +121,14 @@ class productsController extends Controller
 
 
         \request()->validate([
-   
+
             'image' => 'required',
-          
+
         ], [
-       
+
 
             "image.required" => "The Image Source Is Required",
-           
+
 
 
         ]);

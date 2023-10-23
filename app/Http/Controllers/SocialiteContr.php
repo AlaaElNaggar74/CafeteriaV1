@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SocialiteContr extends Controller
 {
+
     public function  redirectGoogle()
     {
 

@@ -148,6 +148,91 @@
     </div>
     </nav>
     @endif
+    @if ( !Auth::user())
+
+    <nav class="navbar navbar-expand-md navbar-light nav-bg-app shadow-sm">
+        <div class="container">
+            <p class="navbar-brand fw-bold me-4">
+                <img src="{{asset('images/logo.png')}}" class="img-fluid rounded-top" alt="">
+            </p>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+
+                <ul class="navbar-nav ">
+                    <li>
+                        <a href="{{route('indexUser')}}" class="linkk text-decoration-none text-black fs-5">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('orders.index')}}" class="linkk text-decoration-none text-black fs-5"> MyOrder</a>
+
+                        {{-- <a href="" class="px-2 text-decoration-none text-black fs-4">MyOrder</a> --}}
+                    </li>
+
+                </ul>
+
+
+
+
+
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ms-auto d-md-flex justify-content-md-center align-items-md-center">
+                    <li>
+                        <img src="{{ asset('images/user4.png') }}" alt="error" style="width:50px;height:50px " class="rounded-2 m-1">
+
+                    </li>
+                    <!-- Authentication Links -->
+                    {{-- @guest --}}
+                    <li class="nav-item dropdown">
+                        <div class="div ">
+
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('login') }}" onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                    {{ __('Login') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('login') }}" method="get" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                    {{-- @else --}}
+                    {{-- <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('login') }}" onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                    </li> --}}
+                    {{-- @endguest --}}
+                </ul>
+                {{-- <div class="d-flex align-items-center"  >
+                <img src="{{ asset('images/havaneseBg.jpg') }}" alt="" style="width:50px;height:50px " class="rounded-2" >
+                <p class="ms-1 mb-0 fs-4">Alaa</p>
+            </div>
+        </div> --}}
+        </div>
+    </nav>
+    @endif
     <main class="">
         @yield('content')
     </main>

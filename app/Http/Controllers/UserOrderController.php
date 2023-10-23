@@ -11,6 +11,10 @@ use App\Models\User;
 
 class UserOrderController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
     function store()
     {
         // dd(\request()->all());
@@ -66,6 +70,8 @@ class UserOrderController extends Controller
         // $order->product()->attach([3 => ['quantity' => 1], 4 => ['quantity' => 2], 5 => ['quantity' => 3]]);
         // dd($order);
         if ($user_obj->role == "admin") {
+            $order->paied = 'true';
+            $order->save();
             session()->flash('success', 'Order added successfully.');
             return redirect()->back();
         } elseif ($user_obj->role == "user") {

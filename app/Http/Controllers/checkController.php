@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class checkController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
     protected function index(Request $request)
     {
         $users = User::all();
