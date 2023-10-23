@@ -1,5 +1,12 @@
 .checks{
-    margin-top: 100px;
+    /* margin-top: 100px; */
+    /* padding: 20px 0 0 0 ; */
+    padding: 20px 0  ;
+    min-height: calc(100vh - 80px);
+    /* background-color: aquamarine; */
+    margin: 0;
+
+
     
 }
 

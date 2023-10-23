@@ -30,6 +30,7 @@
                     <tbody>
 
                         @foreach ($categories as $category)
+                        @if($category->name != "empty")
                         <tr>
                             <th>{{$category->id}}</th>
                             <th>{{$category->name}}</th>
@@ -45,9 +46,8 @@
                                     <input type="submit" class="btn btn-danger" value="delete">
                                 </form>
                             </th>
-
                         </tr>
-
+                        @endif
                         @endforeach
 
                     </tbody>

@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{asset('style/categoryIndex.css')}}">
     <link rel="stylesheet" href="{{asset('style/categoryEdit.css')}}">
     <link rel="stylesheet" href="{{asset('style/categoryShow.css')}}">
+    <link rel="stylesheet" href="{{asset('style/creatCategory.css')}}">
     <link rel="stylesheet" href="{{asset('style/adminViewPro.css')}}">
     <link rel="stylesheet" href="{{asset('style/checks.css')}}">
     <link rel="stylesheet" href="{{asset('style/checkOut.css')}}">
@@ -46,7 +47,8 @@
         @if ( Auth::user())
 
         <nav class="navbar navbar-expand-md navbar-light nav-bg-app shadow-sm">
-            <div class="container">
+            <div class="container-fluid">
+               
                 <p class="navbar-brand fw-bold me-4">
                     <img src="{{asset('images/logo.png')}}" class="img-fluid rounded-top" alt="">
                 </p>

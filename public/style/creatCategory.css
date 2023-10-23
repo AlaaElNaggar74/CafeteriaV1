@@ -1,9 +1,11 @@
-.category-show{
-    /* margin-top: 120px; */
+.creatCategory{
+    /* margin-top: 100px; */
     /* padding: 20px 0 0 0 ; */
     padding: 20px 0  ;
     min-height: calc(100vh - 80px);
     /* background-color: aquamarine; */
     margin: 0;
 
+    
 }
+

@@ -34,6 +34,7 @@ class productsController extends Controller
     }
 
     // show Function***********************
+    
     function showProduct($id)
     {
         $product = Product::findorfail($id);

@@ -35,8 +35,8 @@
             <option selected value="1">Select Category</option>
 
             @foreach ($categories as $category)
-            @if($category->id != 1)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
+            @if($category->name != "empty")
+               <option value="{{$category->id}}">{{$category->name}}</option>
             @endif
             @endforeach
             {{-- <option value="1">One</option>

@@ -1,20 +1,56 @@
 
 
 .adminHomePage {
-    margin-top: 120px;
+    padding: 20px 0  ;
+    min-height: calc(100vh - 80px);
+    /* background-color: aquamarine; */
+    margin: 0;
+}
+.adminHomePage .notfication{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+   z-index: 1000;
+   text-align: center;
+   width: 500px;
+   height: 200px;
+   border: 50px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   /* background-color: aqua; */
+   color: white;
+   font-size: 1.3rem;
+   opacity: 1;
+   visibility: visible;
+   transition: .2s;
+   
 }
 
 .adminHomePage .ta{
     overflow-x: auto;
 }
 
-.adminHomePage th {
+.adminHomePage table {
+ /* background-color: chartreuse; */
+ width: 100%;
+}
+
+.adminHomePage th ,.adminHomePage td {
+    border-bottom: 0;
+    height: 50px;
+    /* padding: px; */
+    vertical-align: center;
+}
+
+/* .adminHomePage th {
     border-bottom: 0;
 }
 
 .adminHomePage td {
     border-bottom: 0;
-}
+} */
 
 .adminHomePage .lin {
     width: 80%;
@@ -32,7 +68,7 @@
 }
 
 .adminHomePage .indexRight {
-    height: 400px;
+    /* height: 400px; */
     /* background-color: aqua; */
     overflow-y: auto;
 }
@@ -41,7 +77,8 @@
     padding: 10px;
 }
 .adminHomePage .lef {
-    height: 400px;
+    /* height: 400px; */
+    /* background-color: #490c0c; */
     /* background-color: aqua; */
     overflow-y: auto;
     overflow-x: hidden;
@@ -75,8 +112,8 @@
     position: absolute;
     top: -15px;
     right: 10px;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: #afafaf;
     color: rgb(255, 255, 255);

@@ -1,6 +1,12 @@
 
 .adminUserPage {
-    margin-top: 120px;
+    /* margin-top: 120px; */
+    /* padding: 20px 0 0 0 ; */
+    padding: 20px 0  ;
+    min-height: calc(100vh - 80px);
+    /* background-color: aquamarine; */
+    margin: 0;
+
 }
 /* .adminUserPage .orderDetails .orderDet{
     width: ;

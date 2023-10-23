@@ -1,6 +1,6 @@
 @extends('layouts.app') @section('content')
-@error('quantity') <p class="text-danger">{{$message}}</p> @enderror
-@error('userID') <p class="text-danger">{{$message}}</p> @enderror
+{{-- @error('quantity') <p class="text-danger">{{$message}}</p> @enderror --}}
+{{-- @error('userID') <p class="text-danger">{{$message}}</p> @enderror --}}
 @if (session()->has('success'))
 <div class="alert alert-success">
     {{ session('success') }}
@@ -9,6 +9,15 @@
 <form method="Post" action="{{route('Order.store')}}" class="adminHomePage">
     @csrf
     <div class="container-fluid">
+      <h1 class="text-center">User Page</h1>
+    @if (session()->has('success'))
+      <div class="notfication alert alert-success">
+         {{ session('success') }}
+      </div>
+      @else
+      @error('quantity') <p class="notfication bg-danger bg-opacity-50  mb-2 p-3 rounded-1 border border-danger ">{{$message}}</p> @enderror
+      @error('userID') <p class="notfication bg-danger bg-opacity-50  mb-2 p-3 rounded-1 border border-danger">{{$message}}</p> @enderror
+      @endif
         <div class="col-md-3 ms-auto mb-3">
             <div>
                 <input class="form-control" id="search" placeholder="Type to search..." />
@@ -21,7 +30,7 @@
                     <form>
                         <div class="rig ">
                             <div class="ta">
-                                <table class="table">
+                                <table class="">
                                     <tbody class="tableBody">
 
 
@@ -167,6 +176,21 @@
 </form>
 <script>
     const products = @json($products);
+
+
+    let notfication=document.querySelectorAll(".notfication");
+  notfication.forEach(element => {
+    if (element) {
+    setTimeout(() => {
+      // element.style.display="none";
+      element.style.opacity=0;
+      element.style.visibility="hidden";
+    }, 2000);
+  }
+});
+
+
+
 </script>
 <script src="{{asset('js/index.js')}}"></script>
 @endsection

@@ -1,14 +1,19 @@
 @extends('layouts.app') @section('content')
-@error('quantity') <p class="text-danger">{{$message}}</p> @enderror
-@error('userID') <p class="text-danger">{{$message}}</p> @enderror
-@if (session()->has('success'))
-<div class="alert alert-success">
-  {{ session('success') }}
-</div>
-@endif
+
+
 <form method="Post" action="{{route('Order.store')}}" class="adminHomePage">
   @csrf
   <div class="container-fluid">
+    <h1 class="text-center">Admin Page</h1>
+    @if (session()->has('success'))
+      <div class="notfication bg-success bg-opacity-75 mb-2 p-3 rounded-1 border border-success ">
+        <p> {{ session('success') }}</p>
+        
+      </div>
+      @else
+      @error('quantity') <div class="notfication bg-opacity-75 bg-danger mb-2 p-3 rounded-1 border border-danger"><p class="     ">{{$message}}</p></div> @enderror
+      @error('userID') <div class="notfication bg-opacity-75 bg-danger mb-2 p-3 rounded-1 border border-danger"><p class="   ">{{$message}}</p></div> @enderror
+      @endif
     <div class="col-md-3 ms-auto mb-3">
       <div>
         <input class="form-control" id="search" placeholder="Type to search..." />
@@ -21,7 +26,7 @@
           <form>
             <div class="rig ">
               <div class="ta">
-                <table class="table">
+                <table class="">
                   <tbody class="tableBody">
 
 
@@ -59,7 +64,7 @@
       <div class="col-md-4"></div>
       --}}
       <div class="col-md-8">
-        <div class="addTouser">
+        <div class="addTouser mt-5 mt-md-0">
           <h3>Add To User</h3>
           <div class="mb-3 d-flex align-items-center col-md-3 m-auto">
             <select class="form-select" name="userID" aria-label="Default select example">
@@ -86,6 +91,7 @@
               <p class="fw-bold">{{$product->name}}</p>
             </div>
             @endforeach
+            
             <!-- <div class="drink text-center">
               <div class="drinkPrice">75</div>
               <img src="{{asset('images/drink2.png')}}" alt="" class="" />
@@ -179,6 +185,20 @@
 </form>
 <script>
   const products = @json($products);
+
+  let notfication=document.querySelectorAll(".notfication");
+  notfication.forEach(element => {
+    if (element) {
+    setTimeout(() => {
+      element.style.opacity=0;
+      element.style.visibility="hidden";
+      // element.style.dispaly="none";
+    }, 1000);
+  }
+});
+
+  
+
 </script>
 <script src="{{asset('js/index.js')}}"></script>
 @endsection

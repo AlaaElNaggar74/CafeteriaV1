@@ -1,40 +1,36 @@
-#app nav.nav-bg-app{
-
+#app nav.nav-bg-app {
     background-color: rgba(158, 158, 158, 0.281);
 }
+/* 
+#app  {
+    background-color: blue; 
+   position: relative; 
+    height:auto; 
+    background-color: blue; 
+} */
 
 #app nav {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    padding: 10px 0;
+  
+    padding: 10px 20px;
 }
 
-#app nav .navbar-brand{
+#app nav .navbar-brand {
     width: 60px;
     height: 60px;
-
 }
 
-#app nav img{
-width: 100%;
-filter: grayscale(50%);
-transition: .3s;
-
-
+#app nav img {
+    width: 100%;
+    filter: grayscale(50%);
+    transition: 0.3s;
 }
-#app nav img:hover{
+#app nav img:hover {
     filter: grayscale(0%);
-
-
 }
 
 #app nav p {
- 
     padding: 0px;
-    margin: 0;;
+    margin: 0;
 }
 
 #app nav a.linkk {
@@ -49,3 +45,9 @@ transition: .3s;
     background-color: white;
     color: black;
 }
+
+/* @media (max-width: 762px) {
+    #app nav.nav-bg-app {
+        background-color: rgba(177, 177, 177, 0.699);
+    }
+} */

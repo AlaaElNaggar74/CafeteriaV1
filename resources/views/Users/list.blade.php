@@ -22,7 +22,7 @@
                             <table class="table table-responsive text-center w-75 mx-auto">
                             <thead>
                                 <tr>
-                                <th>No</th>
+                                <th>No </th>
                                 <th >Name</th>
                                 <th >Address</th>
                                 <th >Role</th>
