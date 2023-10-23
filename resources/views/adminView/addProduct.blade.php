@@ -23,36 +23,32 @@
          @error('name') <p class="text-danger">{{$message}}</p> @enderror
 
 
-       
-         <div class="mb-1">
-          <label for="categ" class="form-label">Category</label>
-          <select
-            class="form-select"
-            aria-label="Default select example"
-            name="category_id"
-          >
-          
-            <option selected value="1">Select Category</option>
 
-            @foreach ($categories as $category)
-            @if($category->id != 1)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-            @endif
-            @endforeach
-            {{-- <option value="1">One</option>
+         <div class="mb-1">
+           <label for="categ" class="form-label">Category</label>
+           <select class="form-select" aria-label="Default select example" name="category_id">
+
+             <option selected value="1">Select Category</option>
+
+             @foreach ($categories as $category)
+             @if($category->name != "empty")
+             <option value="{{$category->id}}">{{$category->name}}</option>
+             @endif
+             @endforeach
+             {{-- <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option> --}}
-          </select>
-        </div>
-        @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
+           </select>
+         </div>
+         @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
 
 
          {{-- <div class="mb-1">
            <label for="category" class="form-label">category</label>
            <input type="text" class="form-control" id="category" name="category" value="{{old('category')}}" placeholder="Enter Your category" />
-         </div> --}}
+     </div> --}}
 
-         {{--
+     {{--
         <div class="mb-1">
           <label for="email" class="form-label">Email address</label>
           <input
@@ -64,23 +60,23 @@
         </div>
         --}}
 
-         <div class="mb-1">
-           <label for="price" class="form-label">Price</label>
-           <input type="number" class="form-control" id="price" name="price" value="{{old('price')}}" placeholder="price" />
-         </div>
-         @error('price') <p class="text-danger">{{$message}}</p> @enderror
-         <div class="mb-1">
-           <label for="stock" class="form-label">Stock</label>
-           <input type="number" class="form-control" id="stock" name="stock" value="{{old('stock')}}" placeholder="stock" />
-         </div>
+     <div class="mb-1">
+       <label for="price" class="form-label">Price</label>
+       <input type="number" class="form-control" id="price" name="price" value="{{old('price')}}" placeholder="price" />
+     </div>
+     @error('price') <p class="text-danger">{{$message}}</p> @enderror
+     <div class="mb-1">
+       <label for="stock" class="form-label">Stock</label>
+       <input type="number" class="form-control" id="stock" name="stock" value="{{old('stock')}}" placeholder="stock" />
+     </div>
 
-         <div class="mb-1">
-           <label for="price" class="form-label">image</label>
-           <input type="file" class="form-control" id="image" name="image" placeholder="image Pr" />
-         </div>
-         @error('image') <p class="text-danger">{{$message}}</p> @enderror
+     <div class="mb-1">
+       <label for="price" class="form-label">image</label>
+       <input type="file" class="form-control" id="image" name="image" placeholder="image Pr" />
+     </div>
+     @error('image') <p class="text-danger">{{$message}}</p> @enderror
 
-         {{--
+     {{--
         <div class="mb-1">
           <label for="conPassw" class="form-label">Confirmed Password</label>
           <input
@@ -102,7 +98,7 @@
         </div>
         --}}
 
-         {{-- <div class="mb-1">
+     {{-- <div class="mb-1">
           <label for="categ" class="form-label">Category</label>
           <select
             class="form-select"
@@ -115,7 +111,7 @@
             <option value="3">Three</option>
           </select>
         </div> --}}
-         {{-- <div class="mb-1">
+     {{-- <div class="mb-1">
           <label for="proImag" class="form-label">Product Image</label>
           <input
             type="file"
@@ -126,12 +122,12 @@
           />
         </div> --}}
 
-         <div class="bt mt-4">
-           <input type="submit" value="Save" class="btn btn-success" />
-           <input type="button" value="Reset" class="btn btn-info" />
-         </div>
-       </form>
+     <div class="bt mt-4">
+       <input type="submit" value="Save" class="btn btn-success" />
+       <input type="button" value="Reset" class="btn btn-info" />
      </div>
+     </form>
    </div>
+ </div>
  </div>
  @endsection

@@ -33,10 +33,10 @@
             <td>{{$product->price}}$</td>
             <td class="imgTable"><img src="{{asset('/images/productsImage/'.$product->image)}}" alt="" class="" />
             </td>
-            @if ($product->category->id !== 1)
-             <td><a href="{{route('categories.show',$product->category->id)}}">{{$product->category->name}}</a>  </td>
+            @if ($product->category->name !== 'empty')
+            <td><a href="{{route('categories.show',$product->category->id)}}">{{$product->category->name}}</a> </td>
             @else
-            
+
             <td> Empty </td>
             @endif
             <td><a href="{{route('destroyProducts',$product->id)}}" class="btn btn-danger">delete</a>

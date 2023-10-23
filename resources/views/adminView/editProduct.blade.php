@@ -1,68 +1,49 @@
  @extends('layouts.app')
  @section('content')
-<div class="adminEditProductrPage">
-  <div class="container">
-    @if ($errors->any())
-    <div >
-        <ul>
-            @foreach ($errors->all() as $error)
-                {{-- <li>{{ $error }}</li> --}}
-            @endforeach
-        </ul>
-    </div>
-@endif
-    <h1>Edit Product</h1>
-    <div class="Productfor col-md-9 col-lg-6 col-10 m-auto">
-      {{-- <form  method="Post" action="{{route('product.edit')}}" enctype="multipart/form-data"> --}}
-      <form  method="Post" action="{{route('updateProduct')}}" enctype="multipart/form-data">
-        @csrf
-        <div class="mb-1">
-          <label for="name" class="form-label">ID</label>
-          <input
-            type="text"
-            class="form-control "
-            id="name"
-            name="id"
-            readonly
-            value="{{$editItem->id}}" 
-            placeholder="Enter Your Name"
-          />
-        </div>
-        
-        <div class="mb-1">
-          <label for="name" class="form-label">Product</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            value="{{$editItem->name}}" 
-            placeholder="Enter Your Name"
-          />
-        </div>
-        @error('name') <p class="text-danger">{{$message}}</p> @enderror
+ <div class="adminEditProductrPage">
+   <div class="container">
+     @if ($errors->any())
+     <div>
+       <ul>
+         @foreach ($errors->all() as $error)
+         {{-- <li>{{ $error }}</li> --}}
+         @endforeach
+       </ul>
+     </div>
+     @endif
+     <h1>Edit Product</h1>
+     <div class="Productfor col-md-9 col-lg-6 col-10 m-auto">
+       {{-- <form  method="Post" action="{{route('product.edit')}}" enctype="multipart/form-data"> --}}
+       <form method="Post" action="{{route('updateProduct')}}" enctype="multipart/form-data">
+         @csrf
+         <div class="mb-1">
+           <label for="name" class="form-label">ID</label>
+           <input type="text" class="form-control " id="name" name="id" readonly value="{{$editItem->id}}" placeholder="Enter Your Name" />
+         </div>
 
-        
-        <div class="mb-1">
-          <label for="categ" class="form-label">Category</label>
-          <select
-            class="form-select"
-            aria-label="Default select example"
-            name="category_id"
-          >
-          
-            <option selected value="1">Select Category</option>
+         <div class="mb-1">
+           <label for="name" class="form-label">Product</label>
+           <input type="text" class="form-control" id="name" name="name" value="{{$editItem->name}}" placeholder="Enter Your Name" />
+         </div>
+         @error('name') <p class="text-danger">{{$message}}</p> @enderror
 
-            @foreach ($categories as $category)
-            @if($category->id != 1)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-            @endif
-            @endforeach
-   
-          </select>
-        </div>
-        @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
-        {{--
+
+         <div class="mb-1">
+           <label for="categ" class="form-label">Category</label>
+           <select class="form-select" aria-label="Default select example" name="category_id">
+
+             <option selected value="1">Select Category</option>
+
+             @foreach ($categories as $category)
+             @if($category->name != "empty")
+             <option value="{{$category->id}}">{{$category->name}}</option>
+             @endif
+             @endforeach
+
+           </select>
+         </div>
+         @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
+         {{--
         <div class="mb-1">
           <label for="email" class="form-label">Email address</label>
           <input
@@ -74,32 +55,18 @@
         </div>
         --}}
 
-        <div class="mb-1">
-          <label for="price" class="form-label">Price</label>
-          <input
-            type="number"
-            class="form-control"
-            id="price"
-            name="price"
-            value="{{$editItem->price}}" 
-
-            placeholder="Product Pr"
-          />
-        </div>
+         <div class="mb-1">
+           <label for="price" class="form-label">Price</label>
+           <input type="number" class="form-control" id="price" name="price" value="{{$editItem->price}}" placeholder="Product Pr" />
+         </div>
 
 
-        <div class="mb-1">
-          <label for="price" class="form-label">image</label>
-          <input
-            type="file"
-            class="form-control"
-            id="image"
-            name="image"
-            placeholder="image Pr"
-          />
-        </div>
-        @error('image') <p class="text-danger">{{$message}}</p> @enderror
-        {{--
+         <div class="mb-1">
+           <label for="price" class="form-label">image</label>
+           <input type="file" class="form-control" id="image" name="image" placeholder="image Pr" />
+         </div>
+         @error('image') <p class="text-danger">{{$message}}</p> @enderror
+         {{--
         <div class="mb-1">
           <label for="conPassw" class="form-label">Confirmed Password</label>
           <input
@@ -121,7 +88,7 @@
         </div>
         --}}
 
-        {{-- <div class="mb-1">
+         {{-- <div class="mb-1">
           <label for="categ" class="form-label">Category</label>
           <select
             class="form-select"
@@ -134,7 +101,7 @@
             <option value="3">Three</option>
           </select>
         </div> --}}
-        {{-- <div class="mb-1">
+         {{-- <div class="mb-1">
           <label for="proImag" class="form-label">Product Image</label>
           <input
             type="file"
@@ -145,12 +112,12 @@
           />
         </div> --}}
 
-        <div class="bt mt-4">
-          <input type="submit" value="update" class="btn btn-success" />
-          <input type="button" value="Reset" class="btn btn-info" />
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-@endsection
+         <div class="bt mt-4">
+           <input type="submit" value="update" class="btn btn-success" />
+           <input type="button" value="Reset" class="btn btn-info" />
+         </div>
+       </form>
+     </div>
+   </div>
+ </div>
+ @endsection
