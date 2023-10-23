@@ -104,11 +104,13 @@
   <script>
     const divv = document.createElement("div");
 
+
+
     let order = document.querySelectorAll('.order');
 
     const div = document.createElement("div");
 
-
+    div.classList.add("d-flex");
 
     order.forEach(element => {
 
@@ -188,12 +190,12 @@
           $.each(response, function(index) {
             console.log(response);
 
-            Test_HTML += `<div class="orderItems mt-5">
+            Test_HTML += `<div class="orderItems mt-5 mx-3">
                         <div class="checkDrink text-center ">
-                          <div>
+                          <div class="drink">
                               <img src="/images/` + response[index].image + `" class="img-fluid rounded-top" alt="" width=50 height=50 />
-                              <div class="drinkPrice">` + response[index].order_id + `</div>
-                              <p class="fw-bold">` + response[index].price + `</p>
+                              <div >` + response[index].order_id + `</div>
+                              <p class="fw-bold drinkPrice"">` + response[index].price + `</p>
                               <p class="fw-bold">` + response[index].name + `</p>
 
                                     

@@ -30,6 +30,7 @@
                     <tbody>
 
                         @foreach ($categories as $category)
+                        @if($category->name != "empty")
                         <tr>
                             <th>{{$category->id}}</th>
                             <th>{{$category->name}}</th>
@@ -47,7 +48,7 @@
                             </th>
 
                         </tr>
-
+                        @endif
                         @endforeach
 
                     </tbody>
