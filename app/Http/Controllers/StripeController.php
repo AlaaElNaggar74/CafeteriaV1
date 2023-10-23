@@ -16,7 +16,13 @@ class StripeController extends Controller
 
     public function checkOut()
     {
-        return view('checkOut.checkOut');
+        if (Auth::user()) {
+            if (Auth::user()->role != "admin") {
+
+                return to_route("indexUser");
+            }
+            return to_route("adminIndex");
+        }
     }
     // public function session(Request $request)
     // {
@@ -57,6 +63,7 @@ class StripeController extends Controller
             if (Auth::user()->role != "admin") {
                 $order_obj->paied = 'true';
                 $order_obj->save();
+                session()->flash('success', 'Order added successfully.');
                 return to_route("indexUser");
             }
             return to_route("adminIndex");

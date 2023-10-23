@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\User;
+use Illuminate\Validation\Rules\Unique;
 
 class productsController extends Controller
 {
@@ -117,23 +118,6 @@ class productsController extends Controller
     //  Update Function***********************
     function updateProduct()
     {
-
-
-
-        \request()->validate([
-
-            'image' => 'required',
-
-        ], [
-
-
-            "image.required" => "The Image Source Is Required",
-
-
-
-        ]);
-
-
         $request = \request();
         $request_data = \request()->all();
         if ($request->hasFile("image")) {
@@ -141,8 +125,27 @@ class productsController extends Controller
             $path = $image->store("catLogo", "products_images");
             $image = $path;
         }
-
         $id = \request()->get("id");
+
+        \request()->validate([
+            'name' => ['required', 'min:3', 'unique:products,name,' . $id,],
+            'image' => ['required'],
+
+        ], [
+
+            "name.required" => "The name Is Required",
+            "name.unique" => "The name Is unique",
+            "name.min" => "The name At Least 3 Char",
+            "image.required" => "The Image Source Is Required",
+
+
+
+        ]);
+
+
+
+
+
         $productID = Product::where("id", $id)->first();
 
         $name = \request()->get("name");
