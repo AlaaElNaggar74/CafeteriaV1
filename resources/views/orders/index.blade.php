@@ -74,7 +74,7 @@
                
               let order=document.querySelectorAll('.order');
 
-              
+              div.classList.add("d-flex");
 
               order.forEach(element => {
                  
@@ -94,14 +94,13 @@
                          {
                         
                             
-                           Test_HTML += `<div class="orderItems mt-5">
+                           Test_HTML += `<div class="orderItems mt-5 mx-4 text-center">
                                         <div class="checkDrink text-center d-flex justify-content-center align-items-center">
-                                        <div>
-                                            <img src="/images/` + response[index].image +`" class="img-fluid rounded-top" alt="" width=50 height=50 />
-                                           <div class="drinkPrice">`+ response[index].order_id +`</div>
-                                           <p class="fw-bold">`+ response[index].price +`</p>
-           
-                                           
+                                        <div class="drink">
+                                            <img src="/images/` + response[index].image +`" class="img-fluid rounded-top" alt="" width=50 height=50 /> 
+                                           <p class="fw-bold drinkPrice">`+ response[index].price +`</p>
+                                           <div>`+ response[index].name +`</div>
+                                           <div>`+ response[index].order_id +`</div>
                                         </div>
                                 
                                         </div>  
