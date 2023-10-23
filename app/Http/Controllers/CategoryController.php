@@ -8,13 +8,17 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories= Category::all();
-        return view("category.index",["categories"=>$categories]);
+        $categories = Category::all();
+        return view("category.index", ["categories" => $categories]);
     }
 
     /**
@@ -30,15 +34,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $logo=null;
-        $request_data=$request->all();
+        $logo = null;
+        $request_data = $request->all();
         if ($request->hasFile("logo")) {
             # code...
-            $logo=$request_data['logo'];
-            
+            $logo = $request_data['logo'];
 
-            $path=$logo->store("logos","category_upload");
-            $request_data['logo']=$path;
+
+            $path = $logo->store("logos", "category_upload");
+            $request_data['logo'] = $path;
         }
 
         // dd($logo);
@@ -47,7 +51,6 @@ class CategoryController extends Controller
         category::create($request_data);
         // category::create(["name"=>$request->get("name"),"logo"=>$request->get("logo")]);
         return to_route("categories.index");
-        
     }
 
     /**
@@ -55,7 +58,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view("category.show",["category"=>$category]);
+        return view("category.show", ["category" => $category]);
     }
 
     /**
@@ -64,9 +67,8 @@ class CategoryController extends Controller
     public function edit(Category $category)
 
     {
-        
-        return view('category.edit',['category'=>$category]);
-       
+
+        return view('category.edit', ['category' => $category]);
     }
 
     /**

@@ -44,18 +44,24 @@
 
         
         <div class="mb-1">
-          <label for="category" class="form-label">category</label>
-          <input
-            type="text"
-            class="form-control"
-            id="category"
-            name="category"
-            value="{{$editItem->category}}" 
+          <label for="categ" class="form-label">Category</label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            name="category_id"
+          >
+          
+            <option selected value="1">Select Category</option>
 
-            placeholder="Enter Your category"
-          />
+            @foreach ($categories as $category)
+            @if($category->id != 1)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+            @endif
+            @endforeach
+   
+          </select>
         </div>
-
+        @error('category_id') <p class="text-danger">{{$message}}</p> @enderror
         {{--
         <div class="mb-1">
           <label for="email" class="form-label">Email address</label>

@@ -3,23 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\product;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Order;
+use App\Models\User;
+use Illuminate\Validation\Rules\Unique;
 
 class productsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+    }
     //
 
     // Index Function***********************
     function adminProducts()
     {
-        $products = product::all();
+        $products = Product::all();
         return view("adminView.products", ["products" => $products]);
     }
 
     // Destroy Function***********************
     function destroyProducts($id)
     {
-        $product = product::findorfail($id);
+        $product = Product::findorfail($id);
         if ($product->image) {
             try {
                 unlink("images/productsImage/{$product->image}");
@@ -33,19 +41,22 @@ class productsController extends Controller
     // show Function***********************
     function showProduct($id)
     {
-        $product = product::findorfail($id);
-        return view("adminView.viewProducts", ["viewItem" => $product]);
+        $product = Product::findorfail($id);
+        return view("adminView.viewPro", ["viewItem" => $product]);
     }
 
     // Add  Function***********************
     function addProduct()
     {
-        return view("adminView.addProduct");
+        $categories = Category::all();
+        // dd($category);
+        return view("adminView.addProduct", ["categories" => $categories]);
     }
 
     //  Store Function***********************
     function store()
     {
+        // dd(\request()->all());
         $request = \request();
         $request_data = \request()->all();
         if ($request->hasFile("image")) {
@@ -57,6 +68,8 @@ class productsController extends Controller
         \request()->validate([
             'name' => 'required|min:3|unique:products',
             'image' => 'required|unique:products',
+            'price' => 'required|max:5',
+            'category_id' => 'required',
         ], [
             "name.required" => "The name Is Required",
             "name.unique" => "The name Is unique",
@@ -65,15 +78,24 @@ class productsController extends Controller
             "image.required" => "The Image Source Is Required",
             "image.unique" => "The Image Source Used Before",
 
+            "price.required" => "The price Is Required",
+            "price.max" => "The price Max 5 Number",
+
+            "category_id.required" => "The category Is Required",
+
         ]);
 
         $name = \request()->get("name");
         $price = \request()->get("price");
+        $stock = \request()->get("stock");
+        $category_id = \request()->get("category_id");
         // $category = \request()->get("category");
-        $product = new product();
+        $product = new Product();
 
         $product->name = $name;
         $product->price = $price;
+        $product->stock = $stock;
+        $product->category_id = $category_id;
         // $product->category = $category;
         $product->image = $image;
         $product->save();
@@ -84,14 +106,18 @@ class productsController extends Controller
     //  Edit Function***********************
     function editProduct($id)
     {
-        $product = product::findorfail($id);
-        return view("adminView.editProduct", ["editItem" => $product]);
+        $product = Product::findorfail($id);
+
+        $categories = Category::all();
+        // dd($category);
+
+
+        return view("adminView.editProduct", ["editItem" => $product, "categories" => $categories]);
     }
 
     //  Update Function***********************
     function updateProduct()
     {
-
         $request = \request();
         $request_data = \request()->all();
         if ($request->hasFile("image")) {
@@ -99,16 +125,37 @@ class productsController extends Controller
             $path = $image->store("catLogo", "products_images");
             $image = $path;
         }
-
         $id = \request()->get("id");
-        $productID = product::where("id", $id)->first();
+
+        \request()->validate([
+            'name' => ['required', 'min:3', 'unique:products,name,' . $id,],
+            'image' => ['required'],
+
+        ], [
+
+            "name.required" => "The name Is Required",
+            "name.unique" => "The name Is unique",
+            "name.min" => "The name At Least 3 Char",
+            "image.required" => "The Image Source Is Required",
+
+
+
+        ]);
+
+
+
+
+
+        $productID = Product::where("id", $id)->first();
 
         $name = \request()->get("name");
         $price = \request()->get("price");
+        $category_id = \request()->get("category_id");
         // $category = \request()->get("category");
 
         $productID->name = $name;
         $productID->price = $price;
+        $productID->category_id = $category_id;
         // $productID->category = $category;
         $productID->image = $image;
         $productID->save();
@@ -117,15 +164,11 @@ class productsController extends Controller
         return to_route("adminProducts");
     }
 
-
-
-
-
-
     function index()
     {
-
-        return view("userView.index");
+        $products = Product::all();
+        // $users = User::all();
+        return view("userView.index", ["products" => $products]);
     }
     function orders()
     {
@@ -134,9 +177,11 @@ class productsController extends Controller
     }
     function adminIndex()
     {
-        $products = product::all();
-        return view("adminView.index", ["products" => $products]);
+        $products = Product::all();
+        $users = User::all();
+        return view("adminView.index", ["products" => $products, "users" => $users]);
     }
+
 
 
     function adminUser()

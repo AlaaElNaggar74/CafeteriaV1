@@ -21,8 +21,6 @@ return new class extends Migration
             $table->foreign('order_id')->references('id')->on('orders')->onDelete("cascade");
             $table->foreign('product_id')->references('id')->on('products')->onDelete("cascade");
 
-            // $table->primary(['order_id', 'product_id']);
-
         
 
            // DB::statement('ALTER TABLE spins MODIFY rid INTEGER NOT NULL AUTO_INCREMENT');

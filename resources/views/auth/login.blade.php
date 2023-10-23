@@ -82,9 +82,12 @@
                                     <button type="submit" class="btn btn-success my-1">
                                         {{ __('Login') }}
                                     </button>
-                                    <button type="submit" class="btn btn-primary my-1">
-                                        {{ __('SignIn With Google') }}
-                                    </button>
+                                    <a href="/auth/google" class="btn btn-primary my-1">
+                                        Google
+                                    </a>
+                                    <a href="/userHome" class="btn btn-primary my-1">
+                                        visit as guest
+                                    </a>
 
 
                                 </div>
