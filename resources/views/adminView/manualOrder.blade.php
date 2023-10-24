@@ -41,7 +41,7 @@
                                             <div class="row">
                                                 @foreach ($order->product as $product)
                                                 <div class="col-md-4">
-                                                    <img class="img-fluid rounded" src="{{asset('images/'.$product->image)}}" width="30%">
+                                                    <img class="img-fluid rounded" src="{{asset('images/productsImage/'.$product->image)}}" width="30%">
                                                     <span class="text-danger fw-bold">{{$product->name}}</span>
                                                 </div>
 
