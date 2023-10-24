@@ -167,11 +167,7 @@
                         <a href="{{route('indexUser')}}" class="linkk text-decoration-none text-black fs-5">Home</a>
                     </li>
 
-                    <li>
-                        <a href="{{route('orders.index')}}" class="linkk text-decoration-none text-black fs-5"> MyOrder</a>
 
-                        {{-- <a href="" class="px-2 text-decoration-none text-black fs-4">MyOrder</a> --}}
-                    </li>
 
                 </ul>
 

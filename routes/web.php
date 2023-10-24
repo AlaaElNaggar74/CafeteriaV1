@@ -36,7 +36,8 @@ Route::middleware(['admin'])->group(function () {
     Route::resource('Users', UserController::class);
     //categoriescontroller routes
     Route::resource('categories', CategoryController::class);
-
+    //orderscontroller
+    Route::resource('orders', App\Http\Controllers\orderController::class)->except(['index']);
 
     //order history
     Route::get('/filterAdmin', [checkController::class, 'searchByDate']);
@@ -45,7 +46,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get("/adminManualOrder", [orderController::class, "adminManualOrder"])->name("adminManualOrder");
     Route::post('/adminManualOrder/{id}/confirm_order', [orderController::class, 'confirm'])->name('confirm');
 });
-
+Route::get('orders', [App\Http\Controllers\orderController::class, 'index'])->name('orders.index');
 Route::get('/', function () {
 
     if (Auth::user()) {
@@ -78,7 +79,7 @@ Route::post("/addOrder", [UserOrderController::class, "store"])->name("Order.sto
 // Route::get("userHome",[productsController::class,"index"])->name("index");
 // Route::get("myOrderUser",[productsController::class,"orders"])->name("userOrder");
 
-Route::resource('orders', App\Http\Controllers\orderController::class);
+// Route::resource('orders', App\Http\Controllers\orderController::class);
 
 
 Route::get('/filter', [orderController::class, 'searchByDate']);
