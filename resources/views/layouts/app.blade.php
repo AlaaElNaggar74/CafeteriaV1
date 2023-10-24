@@ -234,6 +234,7 @@
     </main>
 
     @yield('product');
+    @yield('products');
     </div>
     <script src="{{asset('js/home.js')}}"></script>
 

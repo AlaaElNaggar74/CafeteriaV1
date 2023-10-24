@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="adminUserPage">
+<div style="margin:128px">
     <div class="container">
         <div class="row justify-content-center">
             <!--  project and team member start -->
@@ -82,7 +82,7 @@
                         </div>
 
                     </div>
-                    <div class="d-flex  justify-content-center mt-5">
+                    <div class="d-flex justify-content-center  container mt-5">
                         <div col-8>
                             {{$orders->links()}}
                         </div>

@@ -22,7 +22,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::paginate(5);
+        $users = User::paginate(4);
         //$users = User::all();
         return view('Users.list', ['users' => $users])->with('i', (request()->input('page', 1) - 1) * 5);
     }

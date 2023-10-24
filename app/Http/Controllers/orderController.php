@@ -128,9 +128,9 @@ class orderController extends Controller
 
         $orders = Order::join('users', 'users.id', 'orders.user_id')
             ->select('users.name as username', 'orders.*')
-            // ->where('orders.created_at', '>=', Carbon::parse($mytime)->startOfDay())
-            // ->where('orders.created_at', '<=', Carbon::parse($mytime)->endOfDay())
-            // ->where('orders.paied', true)
+            ->where('orders.created_at', '>=', Carbon::parse($mytime)->startOfDay())
+            ->where('orders.created_at', '<=', Carbon::parse($mytime)->endOfDay())
+            ->where('orders.paied', true)
             ->paginate(5);
 
         foreach ($orders as $order) {
